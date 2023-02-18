@@ -1,0 +1,104 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url = "postgresql://postgres:postgres@127.0.0.1:5432/db"
+}
+
+enum FeatureToggleType {
+  Release
+  Gradual
+}
+
+model User {
+  id String @id
+  name String
+  email String @unique
+  projects Project[]
+  client Client @relation(fields: [clientId], references: [id])
+  clientId String
+  updatedAt DateTime @updatedAt @default(now())
+  createdAt DateTime @default(now())
+}
+
+model Client {
+  id String @id
+  name String
+  projects Project[]
+  environments Environment[]
+  users User[]
+  endClients EndClient[]
+  updatedAt DateTime @updatedAt @default(now())
+  createdAt DateTime @default(now())
+}
+
+model EndClient {
+  id String @id
+  name String
+  client Client @relation(fields: [clientId], references: [id])
+  clientId String
+  updatedAt DateTime @updatedAt @default(now())
+  createdAt DateTime @default(now())
+}
+
+model Environment {
+  id String @id
+  name String
+  updatedAt DateTime @updatedAt @default(now())
+  createdAt DateTime @default(now())
+  projects Project[]
+  client Client @relation(fields: [clientId], references: [id])
+  clientId String
+}
+
+model Project {
+  id String @id
+  name String
+  description String
+  updatedAt DateTime @updatedAt @default(now())
+  createdAt DateTime @default(now())
+  client Client @relation(fields: [clientId], references: [id])
+  clientId String
+  users User[]
+  environments Environment[]
+  features FeatureToggle[]
+  flows Flow[]
+}
+
+model EnvFeatureToggle {
+  id String @id
+  state Boolean
+  type FeatureToggleType
+  updatingUser String
+  queriedAt DateTime?
+  updatedAt DateTime @updatedAt @default(now())
+  createdAt DateTime @default(now())
+  featureToggle FeatureToggle @relation(fields: [featureToggleId], references: [id])
+  featureToggleId String
+  version Int @default(0)
+}
+
+model FeatureToggle {
+  id String @id
+  name String
+  type FeatureToggleType
+  createdBy String
+  updatedAt DateTime @updatedAt @default(now())
+  createdAt DateTime @default(now())
+  project Project @relation(fields: [projectId], references: [id])
+  projectId String
+  flows Flow[]
+  envFeatureToggles EnvFeatureToggle[]
+}
+
+model Flow {
+  id String @id
+  name String
+  updatedAt DateTime @updatedAt @default(now())
+  createdAt DateTime @default(now())
+  project Project @relation(fields: [projectId], references: [id])
+  projectId String
+  features FeatureToggle[]
+}
