@@ -1,17 +1,14 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { TCreateFeatureToggle } from "../types/featureToggle.types";
-import {  } from "../services";
+import {} from "../services";
 
 export interface ICreateEnvironment {
-    Body: TCreateFeatureToggle;
+  Body: TCreateFeatureToggle;
 }
 
-export const createFeatureToggle = async (request: FastifyRequest<ICreateEnvironment>, reply: FastifyReply) => { 
-    const { id, name, clientId } = request.body;
-    const environment = await environmentService.createEnvironment({
-        id,
-        name,
-        clientId
-    })
-    reply.status(200).send({ data: environment })
-}
+export const createFeatureToggle = async (
+  request: FastifyRequest<ICreateEnvironment>,
+  reply: FastifyReply
+): Promise<void> => {
+  reply.status(200).send({ data: [] });
+};

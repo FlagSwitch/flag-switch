@@ -3,8 +3,9 @@ import clientRouter from "./routes/client.router";
 import userRouter from "./routes/user.router";
 import projectRouter from "./routes/project.router";
 import environmentRouter from "./routes/environment.router";
+import { FastifyInstance } from "fastify";
 
-function buildServer() {
+function buildServer(): FastifyInstance {
   const server = Fastify();
 
   server.get("/healthcheck", async function () {
@@ -15,7 +16,7 @@ function buildServer() {
   server.register(userRouter, { prefix: "api/user" });
   server.register(projectRouter, { prefix: "api/project" });
   server.register(environmentRouter, { prefix: "api/environment" });
-  
+
   return server;
 }
 

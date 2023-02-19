@@ -1,10 +1,9 @@
-import { TCreateUser } from 'types/user.types'
-import { userRepository } from '../db/respositories'
+import { TCreateUser } from "types/user.types";
+import { userRepository } from "../db/respositories";
+import { User } from "@prisma/client";
 
-const createUser = async (createUserFields: TCreateUser) => {
-    return await userRepository.create(createUserFields);
-}
+const createUser = async (createUserFields: TCreateUser): Promise<User> => {
+  return userRepository.create(createUserFields);
+};
 
-export {
-    createUser
-}
+export { createUser };

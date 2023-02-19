@@ -1,4 +1,4 @@
-import { Type } from '@sinclair/typebox'
+import { Type } from "@sinclair/typebox";
 
 export const EnvironmentSchema = Type.Object({
   id: Type.String(),
@@ -8,6 +8,6 @@ export const EnvironmentSchema = Type.Object({
 export const CreateEnvironmentSchema = Type.Intersect([
   EnvironmentSchema,
   Type.Object({
-    clientId: Type.String()
-  })
+    clientId: Type.String(),
+  }),
 ]);

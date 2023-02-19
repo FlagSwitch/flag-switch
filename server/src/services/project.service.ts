@@ -1,10 +1,11 @@
-import { TCreateProject } from 'types/project.types'
-import { projectRepository } from '../db/respositories'
+import { TCreateProject } from "types/project.types";
+import { projectRepository } from "../db/respositories";
+import { Project } from "@prisma/client";
 
-const createProject = async (createProjectFields: TCreateProject) => {
-    return await projectRepository.create(createProjectFields);
-}
+const createProject = async (
+  createProjectFields: TCreateProject
+): Promise<Project> => {
+  return projectRepository.create(createProjectFields);
+};
 
-export {
-    createProject
-}
+export { createProject };

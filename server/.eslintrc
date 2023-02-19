@@ -5,8 +5,8 @@
   "extends": ["airbnb-typescript/base", "plugin:prettier/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-      "ecmaVersion": 2022,
-      "project": "./tsconfig.json"
+      "ecmaVersion": 2020,
+      "project": "tsconfig.json"
   },
   "plugins": ["@typescript-eslint", "prettier", "import", "no-only-tests"],
   "root": true,
@@ -25,13 +25,7 @@
       "no-param-reassign": "error",
       "no-return-await": "error",
       "max-nested-callbacks": "off",
-      "no-only-tests/no-only-tests": "error",
-      "new-cap": [
-          "error",
-          {
-              "capIsNewExceptions": ["Router", "Mitm"]
-          }
-      ]
+      "no-only-tests/no-only-tests": "error"
   },
   "overrides": [
       {

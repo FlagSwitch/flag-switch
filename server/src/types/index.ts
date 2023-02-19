@@ -1,1 +1,1 @@
-export * as projectTypes from './project.types';
+export * as projectTypes from "./project.types";

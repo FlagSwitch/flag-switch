@@ -1,6 +1,8 @@
-import { Static } from '@sinclair/typebox';
-import { EnvironmentSchema, CreateEnvironmentSchema} from '../schema/environment.schema';
-
+import { Static } from "@sinclair/typebox";
+import {
+  EnvironmentSchema,
+  CreateEnvironmentSchema,
+} from "../schema/environment.schema";
 
 export type TEnvironment = Static<typeof EnvironmentSchema>;
 
