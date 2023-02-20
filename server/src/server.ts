@@ -4,9 +4,12 @@ import userRouter from "./routes/user.router";
 import projectRouter from "./routes/project.router";
 import environmentRouter from "./routes/environment.router";
 import { FastifyInstance } from "fastify";
+import pinoLogger from "./logger";
 
 function buildServer(): FastifyInstance {
-  const server = Fastify();
+  const server = Fastify({
+    logger: pinoLogger,
+  });
 
   server.get("/healthcheck", async function () {
     return { status: "OK" };

@@ -2,7 +2,7 @@ import { FastifyInstance } from "fastify";
 import { ProjectSchema } from "../schema/project.schema";
 import { createProject } from "../controllers/project.controller";
 
-function ProjectRouter(fastify: FastifyInstance): void {
+async function ProjectRouter(fastify: FastifyInstance): Promise<void> {
   fastify.route({
     method: "POST",
     url: "/create",

@@ -2,7 +2,7 @@ import { FastifyInstance } from "fastify";
 import { EnvironmentSchema } from "../schema/environment.schema";
 import { createEnvironment } from "../controllers/environment.controller";
 
-function EnvironmentRouter(fastify: FastifyInstance): void {
+async function EnvironmentRouter(fastify: FastifyInstance): Promise<void> {
   fastify.route({
     method: "POST",
     url: "/create",

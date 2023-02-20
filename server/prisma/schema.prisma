@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
 }
 
 datasource db {
@@ -7,12 +8,23 @@ datasource db {
   url = "postgresql://postgres:postgres@127.0.0.1:5432/db"
 }
 
-enum FeatureToggleType {
+enum FeatureType {
   Release
-  Gradual
+  GradualRollout
+  Permission
+  Experimental
+  Operational
 }
 
-model User {
+model Application {
+  id String @id
+  name String
+  client Client @relation(fields: [clientId], references: [id])
+  clientId String
+  createdAt DateTime @default(now())
+}
+
+model DashboardUser {
   id String @id
   name String
   email String @unique
@@ -26,15 +38,16 @@ model User {
 model Client {
   id String @id
   name String
+  apps Application[]
   projects Project[]
   environments Environment[]
   users User[]
-  endClients EndClient[]
+  dashboardUsers DashboardUser[]
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
 }
 
-model EndClient {
+model User {
   id String @id
   name String
   client Client @relation(fields: [clientId], references: [id])
@@ -49,6 +62,7 @@ model Environment {
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
   projects Project[]
+  envFeatureToggles EnvFeature[]
   client Client @relation(fields: [clientId], references: [id])
   clientId String
 }
@@ -61,36 +75,37 @@ model Project {
   createdAt DateTime @default(now())
   client Client @relation(fields: [clientId], references: [id])
   clientId String
-  users User[]
+  dashboardUsers DashboardUser[]
   environments Environment[]
-  features FeatureToggle[]
+  features Feature[]
   flows Flow[]
 }
 
-model EnvFeatureToggle {
+model EnvFeature {
   id String @id
   state Boolean
-  type FeatureToggleType
   updatingUser String
   queriedAt DateTime?
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
-  featureToggle FeatureToggle @relation(fields: [featureToggleId], references: [id])
+  environment Environment @relation(fields: [environmentId], references: [id])
+  environmentId String
+  featureToggle Feature @relation(fields: [featureToggleId], references: [id])
   featureToggleId String
   version Int @default(0)
 }
 
-model FeatureToggle {
+model Feature {
   id String @id
   name String
-  type FeatureToggleType
+  type FeatureType
   createdBy String
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
   project Project @relation(fields: [projectId], references: [id])
   projectId String
   flows Flow[]
-  envFeatureToggles EnvFeatureToggle[]
+  envFeatureToggles EnvFeature[]
 }
 
 model Flow {
@@ -100,5 +115,5 @@ model Flow {
   createdAt DateTime @default(now())
   project Project @relation(fields: [projectId], references: [id])
   projectId String
-  features FeatureToggle[]
+  features Feature[]
 }

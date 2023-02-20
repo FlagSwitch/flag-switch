@@ -1,10 +1,10 @@
 import { Type } from "@sinclair/typebox";
-import { FeatureToggleType } from "@prisma/client";
+import { FeatureType } from "@prisma/client";
 
 export const FeatureToggleSchema = Type.Object({
   id: Type.String(),
   name: Type.String(),
-  type: Type.Enum(FeatureToggleType),
+  type: Type.Enum(FeatureType),
   createdBy: Type.String(),
 });
 

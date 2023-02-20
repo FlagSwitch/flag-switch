@@ -2,7 +2,7 @@ import { FastifyInstance } from "fastify";
 import { UserSchema } from "../schema/user.schema";
 import { createUser } from "../controllers/user.controller";
 
-function UserRouter(fastify: FastifyInstance): void {
+async function UserRouter(fastify: FastifyInstance): Promise<void> {
   fastify.route({
     method: "POST",
     url: "/create",

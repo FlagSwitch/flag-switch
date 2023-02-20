@@ -17,7 +17,8 @@
     "url": "https://github.com/FlagSwitch/flag-switch/issues"
   },
   "homepage": "https://github.com/FlagSwitch/flag-switch#readme",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     
   }
 }
