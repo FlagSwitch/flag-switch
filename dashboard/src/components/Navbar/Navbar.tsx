@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
-import { StyledNavbar, StyledNavbarInner, StyledNavbarInnerLeft, StyledNavbarInnerRight, StyledNavbarItem } from './Navbar.style';
+import { StyledNavbar, StyledNavbarInner, StyledNavbarInnerLeft, StyledNavbarInnerRight, StyledNavbarItem, StyledLogo } from './Navbar.style';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import { DarkModeContext } from '../../context/DarkModeContext';
 import { UserOutlined, ZhihuOutlined } from '@ant-design/icons';
 import { Button, Dropdown } from 'antd';
 import type { MenuProps } from 'antd';
+import imageUrl from '@/assets/jpeg/flagSwitchLarge.jpeg'
+
 
 const items: MenuProps['items'] = [
   {
@@ -42,7 +44,7 @@ export const Navbar: React.FC = () => {
     <StyledNavbar>
       <StyledNavbarInner>
         <StyledNavbarInnerLeft>
-
+          <StyledLogo src={imageUrl} />
         </StyledNavbarInnerLeft>
         <StyledNavbarInnerRight>
           <StyledNavbarItem>

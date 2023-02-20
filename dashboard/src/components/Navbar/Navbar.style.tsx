@@ -33,3 +33,17 @@ export const StyledNavbarItem = styled.div`
     padding-left: 10px;
     padding-right: 10px;
 `;
+
+export const StyledLogo = styled.img`
+    width: 120px;
+    min-width: 120px;
+    height: 40px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+`;

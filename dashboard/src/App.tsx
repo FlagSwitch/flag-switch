@@ -12,8 +12,8 @@ function App() {
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <GlobalStyles />
+      <Header></Header>
       <div className="App" style={{ height: '100vh'}}>
-        <Header></Header>
         <Playground />
       </div>
     </ThemeProvider>
