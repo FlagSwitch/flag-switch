@@ -35,10 +35,10 @@ export const StyledNavbarItem = styled.div`
 `;
 
 export const StyledLogo = styled.img`
-    width: 120px;
-    min-width: 120px;
-    height: 40px;
-    min-height: 40px;
+    width: 45px;
+    min-width: 45px;
+    height: 45px;
+    min-height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;

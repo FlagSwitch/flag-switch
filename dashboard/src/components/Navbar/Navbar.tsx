@@ -5,7 +5,7 @@ import { DarkModeContext } from '../../context/DarkModeContext';
 import { UserOutlined, ZhihuOutlined } from '@ant-design/icons';
 import { Button, Dropdown } from 'antd';
 import type { MenuProps } from 'antd';
-import imageUrl from '@/assets/jpeg/flagSwitchLarge.jpeg'
+import imageUrl from '@/assets/jpeg/flagSwitchSmall.jpeg'
 
 
 const items: MenuProps['items'] = [
