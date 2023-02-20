@@ -1,8 +1,5 @@
 import styled from '@emotion/styled';
-import React, { useContext } from 'react';
-import { Typography } from './Typography';
-import { DarkModeSwitch } from 'react-toggle-dark-mode';
-import { ThemeContext } from '../context/ThemeContext';
+import React from 'react';
 
 interface SidebarFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
@@ -26,7 +23,7 @@ const StyledCollapsedSidebarFooter = styled.a`
 
 
 export const SidebarFooter: React.FC<SidebarFooterProps> = ({ children, collapsed, ...rest }) => {
-  const { theme, toggleThemeMode } = useContext(ThemeContext);
+
   return (
     <div
       style={{
@@ -37,26 +34,9 @@ export const SidebarFooter: React.FC<SidebarFooterProps> = ({ children, collapse
     >
       {collapsed ? (
         <StyledCollapsedSidebarFooter>
-          <DarkModeSwitch
-            style={{ marginBottom: '2rem' }}
-            checked={theme === 'dark' ? true : false}
-            onChange={toggleThemeMode}
-            sunColor="#0098e5"
-            moonColor='#59d0ff'
-            size={20}
-          />
         </StyledCollapsedSidebarFooter>
       ) : (
         <StyledSidebarFooter {...rest}>
-          <DarkModeSwitch
-            style={{ marginBottom: '2rem' }}
-            checked={theme === 'dark'}
-            onChange={toggleThemeMode}
-            sunColor="#0098e5"
-            moonColor='#59d0ff'
-            size={20}
-          />
-          <Typography fontWeight={600}>Toggle Theme</Typography>
         </StyledSidebarFooter>
       )}
     </div>

@@ -19,9 +19,8 @@ import { ShoppingCart } from './icons/ShoppingCart';
 import { Service } from './icons/Service';
 import { SidebarFooter } from './components/SidebarFooter';
 import { Typography } from './components/Typography';
-import { ThemeContext } from './context/ThemeContext';
-
-type Theme = 'light' | 'dark';
+import { DarkModeContext } from './context/DarkModeContext';
+import { Button } from 'antd';
 
 const themes = {
   light: {
@@ -70,8 +69,8 @@ const hexToRgba = (hex: string, alpha: number) => {
 };
 
 export const Playground: React.FC = () => {
-  const { toggleSidebar, broken, collapsed } = useProSidebar();
-  const { theme } = useContext(ThemeContext);
+  const { collapsed } = useProSidebar();
+  const { theme } = useContext(DarkModeContext);
 
   const menuItemStyles: MenuItemStyles = {
     root: {
@@ -190,7 +189,7 @@ export const Playground: React.FC = () => {
         </div>
       </Sidebar>
 
-      <main>
+      <main style={{ marginTop: '50px'}}>
         
       </main>
     </div>
