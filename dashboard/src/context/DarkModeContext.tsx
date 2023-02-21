@@ -19,12 +19,10 @@ function DarkModeProvider(props: DarkModeProviderProps){
     const toggleThemeMode = (dark: boolean) => {
         setTheme(dark ? 'dark' : 'light');
     };
-    return (
-        <div>  
+    return ( 
             <DarkModeContext.Provider value={{theme, toggleThemeMode}}>
                 {props.children}
             </DarkModeContext.Provider>
-        </div>
     )
 };
 
