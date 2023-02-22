@@ -9,6 +9,7 @@ export const ProjectItem: React.FC = () => {
 
   return (
     <Card
+        hoverable
         style={{ width: 300, marginTop: 16 }}
         actions={[
           <SettingOutlined key="setting" />,

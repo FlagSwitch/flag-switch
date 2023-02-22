@@ -3,7 +3,7 @@ import App from "../App";
 import Features from "../components/FeaturesPage/Features";
 import Users from "../components/UsersPage/Users";
 import Projects from "../components/ProjectsPage/Projects";
-
+import Overview from "../components/OverviewPage/Overview";
 
 const router = createBrowserRouter([
     {
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         },
         {
             path: "/overview",
-            element: <Projects />,
+            element: <Overview />,
         },
       ],
     },
