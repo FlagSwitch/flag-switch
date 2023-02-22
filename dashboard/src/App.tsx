@@ -4,6 +4,7 @@ import {
   BarChartOutlined,
   ProjectOutlined,
   TeamOutlined,
+  FlagOutlined
 } from '@ant-design/icons';
 import { Layout, Menu, theme, ConfigProvider, Card } from 'antd';
 import styled from 'styled-components';
@@ -55,6 +56,7 @@ const App: React.FC = () => {
   return (
     <ConfigProvider theme={{
       token: {
+        fontFamily: 'Roboto',
         colorPrimary: '#373E95',
       },
       algorithm: darkTheme === 'dark' ? darkAlgorithm : defaultAlgorithm,
@@ -82,6 +84,11 @@ const App: React.FC = () => {
                 label: 'Projects',
               },
               {
+                key: 'features',
+                icon: <FlagOutlined />,
+                label: 'Features',
+              },
+              {
                 key: 'users',
                 icon: <TeamOutlined />,
                 label: 'Users',
@@ -91,14 +98,17 @@ const App: React.FC = () => {
         </Sider>
         <Layout className="site-layout">
           <Header/>
-          <Breadcrumbs />
+          
           <Content
             style={{
-              margin: '24px 16px',
+              margin: '10px 16px',
               padding: 24,
               minHeight: 280
             }}
-          > 
+          >
+            <div style={{marginBottom: '8px', marginLeft: '5px'}}>
+              <Breadcrumbs />
+            </div>
             <Card style={{ width: '100%', height: '100%' }}>
               <Outlet/>
             </Card>

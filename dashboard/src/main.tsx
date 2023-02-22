@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import Projects from './components/ProjectsPage/Projects'
 import Users from './components/UsersPage/Users'
+import Features from './components/FeaturesPage/Features'
 import Overview from './components/OverviewPage/Overview'
 import { DarkModeProvider } from './context/DarkModeContext';
 import { SidePanelProvider} from './context//SidePanelContext';
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <Users />,
+      },
+      {
+        path: "features",
+        element: <Features />,
       },
       {
         path: "overview",
