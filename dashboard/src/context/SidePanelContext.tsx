@@ -2,26 +2,25 @@ import React, {createContext, useState} from 'react';
 
 
 interface ISidePanelProviderContext {
-    collapsed: boolean;
-    toggleCollapse: () => void
+    open: boolean;
+    setOpenSideNavbar: (open: boolean) => void
 }
-const SidePanelContext = createContext<ISidePanelProviderContext>({ collapsed: false, toggleCollapse: () => {} });
+const SidePanelContext = createContext<ISidePanelProviderContext>({ open: true, setOpenSideNavbar: (open: boolean) => {} });
 
 interface SidePanelProviderProps {
     children: React.ReactNode
 }
 
 
-
 function SidePanelProvider(props: SidePanelProviderProps){
-    const [collapsed, setCollapsed] = useState<boolean>(false);
+    const [open, setOpen] = useState<boolean>(false);
 
-    const toggleCollapse = () => {
-        setCollapsed(!collapsed)
+    const setOpenSideNavbar = (state: boolean) => {
+        setOpen(state);
     }
     
     return ( 
-            <SidePanelContext.Provider value={{collapsed, toggleCollapse}}>
+            <SidePanelContext.Provider value={{ open, setOpenSideNavbar}}>
                 {props.children}
             </SidePanelContext.Provider>
     )
