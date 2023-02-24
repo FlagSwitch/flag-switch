@@ -22,7 +22,7 @@ export const StyledLeftContainer = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'left',
-    gap: '10px',
+    gap: '15px',
 }));
 
 export const StyledRightContainer = styled('div')(({ theme }) => ({
