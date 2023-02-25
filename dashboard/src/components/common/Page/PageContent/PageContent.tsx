@@ -1,10 +1,9 @@
 import React, { FC, ReactNode } from 'react';
 import classnames from 'classnames';
-import { PageHeader } from 'component/common/PageHeader/PageHeader';
-import { Paper, PaperProps } from '@mui/material';
-import { useStyles } from './PageContent.styles';
-import useLoading from 'hooks/useLoading';
-import { ConditionallyRender } from '../ConditionallyRender/ConditionallyRender';
+import { PageHeader } from '../PageHeader/PageHeader';
+import { Paper, PaperProps, styled } from '@mui/material';
+import { useStyles } from './PageContent.style';
+import { ConditionallyRender } from '../../ConditionallyRender/ConditionallyRender';
 
 interface IPageContentProps extends PaperProps {
     header?: ReactNode;
@@ -16,14 +15,29 @@ interface IPageContentProps extends PaperProps {
     headerClass?: string;
 }
 
-const PageContentLoading: FC<{ isLoading: boolean; children: ReactNode; }> = ({
+const StyledHeader = styled('div')(({ theme }) => ({
+    borderBottomStyle: 'solid',
+    borderBottomWidth: '1px',
+    borderBottomColor: theme.palette.divider,
+    [theme.breakpoints.down('md')]: {
+        padding: theme.spacing(3, 2),
+    },
+}));
+
+const StyledPaper = styled(Paper)(({ theme }) => ({
+    borderRadius: theme.shape.borderRadiusLarge,
+    boxShadow: 'none',
+    height: '100%'
+}));
+
+const PageContentLoading: FC<{ isLoading: boolean; children: ReactNode }> = ({
     children,
     isLoading,
 }) => {
-    const ref = useLoading(isLoading);
+    //const ref = useLoading(isLoading);
 
     return (
-        <div ref={ref} aria-busy={isLoading} aria-live="polite">
+        <div  aria-busy={isLoading} aria-live="polite" style={{height: '100%'}}>
             {children}
         </div>
     );
@@ -45,7 +59,6 @@ export const PageContent: FC<IPageContentProps> = ({
 
     const headerClasses = classnames(
         'header',
-        styles.headerContainer,
         headerClass || styles.headerPadding,
         {
             [styles.paddingDisabled]: disablePadding,
@@ -65,25 +78,25 @@ export const PageContent: FC<IPageContentProps> = ({
     const paperProps = disableBorder ? { elevation: 0 } : {};
 
     const content = (
-        <Paper
+        <StyledPaper
             {...rest}
             {...paperProps}
-            className={classnames(styles.container, className)}
+            className={classnames(className)}
         >
             <ConditionallyRender
                 condition={Boolean(header)}
                 show={
-                    <div className={headerClasses}>
+                    <StyledHeader className={headerClasses}>
                         <ConditionallyRender
                             condition={typeof header === 'string'}
                             show={<PageHeader title={header as string} />}
                             elseShow={header}
                         />
-                    </div>
+                    </StyledHeader>
                 }
             />
             <div className={bodyClasses}>{children}</div>
-        </Paper>
+        </StyledPaper>
     );
 
     if (disableLoading) {

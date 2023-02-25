@@ -26,12 +26,14 @@ export default function MiniDrawer() {
       <CssBaseline />
       <AppBar />
       <Sidebar/>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3, gap: '5px' }}>
         <DrawerHeader />
-        <Breadcrumbs />
-        <Card sx={{ width: '100%', height: '100%' }}>
+        <div style={{ paddingLeft: '5px'}}>
+          <Breadcrumbs />
+        </div>
+        <div style={{ paddingTop: '5px'}}>
           <Outlet/>
-        </Card>
+        </div>
       </Box>
     </Box>
   );

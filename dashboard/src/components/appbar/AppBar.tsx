@@ -1,4 +1,4 @@
-import { FC, useContext, useState} from 'react'
+import { FC, useContext } from 'react'
 import { SidePanelContext } from '../../contexts/SidePanelContext';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import { styled } from '@mui/material/styles';
@@ -12,6 +12,7 @@ import { Account } from '../account/Account';
 import { useThemeMode } from '../../hooks/useThemeMode';
 import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
+import { LanguageMenu } from '../language/LanguageMenu/LanguageMenu';
 const drawerWidth = 240;
 
 interface AppBarProps extends MuiAppBarProps {
@@ -47,7 +48,7 @@ export const AppBar:FC = () => {
         <Toolbar disableGutters>
         <StyledContainer>
                 <StyledLeftContainer>
-                    <StyledSmallLogo open={open} src={smallImageSrc}/>
+                    <StyledSmallLogo show={open} src={smallImageSrc}/>
                     <IconButton
                             color="inherit"
                             aria-label="open drawer"
@@ -67,6 +68,7 @@ export const AppBar:FC = () => {
                         spacing={2}
                         sx={{ alignItems: 'center'}}
                     >
+                        <LanguageMenu/>
                         <DarkModeSwitch
                                 checked={themeMode === 'dark'}
                                 onChange={onSetThemeMode}

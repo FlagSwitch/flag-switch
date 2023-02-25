@@ -137,6 +137,7 @@ export default createTheme({
         },
         projectCard: {
             hover: colors.grey[100],
+            active: colors.grey[200],
             textColor: '#4A4599',
         },
         standaloneBannerGradient: {

@@ -12,7 +12,7 @@ import {
 import { ConditionallyRender } from '../../../common/ConditionallyRender/ConditionallyRender';
 
 import { useStyles } from './PageHeader.style';
-import { usePageTitle } from 'hooks/usePageTitle';
+import { usePageTitle } from '../../../../hooks/usePageHeader'
 
 const StyledDivider = styled(Divider)(({ theme }) => ({
     height: '100%',
@@ -34,7 +34,7 @@ interface IPageHeaderProps {
     actions?: ReactNode;
     className?: string;
     secondary?: boolean;
-    children: ReactNode;
+    children?: ReactNode;
 }
 
 const PageHeaderComponent: FC<IPageHeaderProps> & {

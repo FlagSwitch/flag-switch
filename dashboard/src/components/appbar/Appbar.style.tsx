@@ -1,15 +1,15 @@
 import { styled } from '@mui/material/styles';
 
 interface StyledSmallLogoProps {
-    open?: boolean;
+    show?: boolean;
   }
-export const StyledSmallLogo = styled('img')<StyledSmallLogoProps>(({ theme, open }) => ({
+export const StyledSmallLogo = styled('img')<StyledSmallLogoProps>(({ theme, show }) => ({
     width: '45px',
     minWidth: '45px',
     height: '45px',
     minHeight: '45px',
     bordeRadius: '8px',
-    ...(open && { display: 'none' }),
+    ...(show && { display: 'none' }),
 }));
 
 export const StyledContainer = styled('div')(({ theme }) => ({

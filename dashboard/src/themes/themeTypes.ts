@@ -76,6 +76,7 @@ declare module '@mui/material/styles' {
         };
         projectCard: {
             hover: string;
+            active: string;
             textColor: string;
         };
         checkmarkBadge: string;

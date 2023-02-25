@@ -14,9 +14,11 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import List from '@mui/material/List';
 import { Theme, CSSObject } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
-import { routes } from '../../router/routes';
+import { upperRoutes, middleRoutes, IRouteInfo } from './routes';
 import { useLocation  } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import smallImageSrc from '../../assets/jpeg/flagSwitchSmall.jpeg';
+import { StyledSmallLogo } from './Sidebar.style'
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -76,15 +78,8 @@ export const Sidebar:FC = () => {
         setOpenSideNavbar(false);
     };
 
-    return (
-        <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
+    const routesToNavListItems = (routes: Record<string, IRouteInfo>) => {
+        return <List>
         {Object.values(routes).map(({ displayName, icon, path }, index) => {
             return (
                 <ListItem key={index} disablePadding sx={{ display: 'block' }}>
@@ -113,7 +108,31 @@ export const Sidebar:FC = () => {
             )
         })}
         </List>
+    }
+
+    return (
+        <Drawer variant="permanent" open={open}>
+        <DrawerHeader>
+        <ListItemButton component="a" href="#customized-list" sx={{ gap: '10px'}}>
+            <StyledSmallLogo show={!open} src={smallImageSrc}/>
+            <ListItemText
+                sx={{ my: 0 }}
+                primary="Flag Switch"
+                primaryTypographyProps={{
+                    fontSize: 20,
+                    fontWeight: 'medium',
+                    letterSpacing: 0,
+                }}
+            />
+          </ListItemButton>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+          </IconButton>
+        </DrawerHeader>
         <Divider />
+        {routesToNavListItems(upperRoutes)}
+        <Divider />
+        {routesToNavListItems(middleRoutes)}
       </Drawer>
     )
 }
