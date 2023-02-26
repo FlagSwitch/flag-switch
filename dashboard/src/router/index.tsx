@@ -5,6 +5,7 @@ import { Features } from "../components/feature/Features/Features";
 import { Users } from "../components/user/Users/Users";
 import { UserGroups } from "../components/userGroup/UserGroups/UserGroups";
 import { Overview } from "../components/overview/Overview";
+import { States } from "../components/state/States/States";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         {
           path: "/features",
           element: <Features />,
+        },
+        {
+          path: "/states",
+          element: <States />,
         },
         {
           path: "/user-groups",

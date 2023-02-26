@@ -14,7 +14,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import List from '@mui/material/List';
 import { Theme, CSSObject } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
-import { upperRoutes, middleRoutes, IRouteInfo } from './routes';
+import { upperRoutes, userRoutes, middleRoutes, IRouteInfo } from './routes';
 import { useLocation  } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import smallImageSrc from '../../assets/jpeg/flagSwitchSmall.jpeg';
@@ -133,6 +133,8 @@ export const Sidebar:FC = () => {
         {routesToNavListItems(upperRoutes)}
         <Divider />
         {routesToNavListItems(middleRoutes)}
+        <Divider />
+        {routesToNavListItems(userRoutes)}
       </Drawer>
     )
 }
