@@ -2,7 +2,7 @@
   "extends": ["config:base"],
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchUpdateTypes": ["major", "minor", "patch"],
       "matchPackagePatterns": ["*"],
       "automerge": true,
       "stabilityDays": 7,
