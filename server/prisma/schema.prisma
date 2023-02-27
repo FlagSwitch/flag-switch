@@ -1,3 +1,4 @@
+
 generator client {
   provider = "prisma-client-js"
   previewFeatures = ["fullTextSearch"]
@@ -5,7 +6,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url = "postgresql://postgres:postgres@127.0.0.1:5432/db"
+  url = env("DATABASE_URL")
 }
 
 enum FeatureType {
@@ -17,26 +18,26 @@ enum FeatureType {
 }
 
 model Application {
-  id String @id
+  id String @id @default(uuid())
   name String
-  client Client @relation(fields: [clientId], references: [id])
-  clientId String
+  account Account @relation(fields: [accountId], references: [id])
+  accountId String
   createdAt DateTime @default(now())
 }
 
 model DashboardUser {
-  id String @id
+  id String @id @default(uuid())
   name String
   email String @unique
   projects Project[]
-  client Client @relation(fields: [clientId], references: [id])
-  clientId String
+  account Account @relation(fields: [accountId], references: [id])
+  accountId String
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
 }
 
-model Client {
-  id String @id
+model Account {
+  id String @id @default(uuid())
   name String
   apps Application[]
   projects Project[]
@@ -48,41 +49,41 @@ model Client {
 }
 
 model User {
-  id String @id
+  id String @id @default(uuid())
   name String
-  client Client @relation(fields: [clientId], references: [id])
-  clientId String
+  accout Account @relation(fields: [accountId], references: [id])
+  accountId String
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
 }
 
 model Environment {
-  id String @id
+  id String @id @default(uuid())
   name String
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
   projects Project[]
   envFeatureToggles EnvFeature[]
-  client Client @relation(fields: [clientId], references: [id])
-  clientId String
+  account Account @relation(fields: [accountId], references: [id])
+  accountId String
 }
 
 model Project {
-  id String @id
+  id String @id @default(uuid())
   name String
   description String
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
-  client Client @relation(fields: [clientId], references: [id])
-  clientId String
+  account Account @relation(fields: [accountId], references: [id])
+  accountId String
   dashboardUsers DashboardUser[]
   environments Environment[]
   features Feature[]
-  flows Flow[]
+  states State[]
 }
 
 model EnvFeature {
-  id String @id
+  id String @id @default(uuid())
   state Boolean
   updatingUser String
   queriedAt DateTime?
@@ -96,7 +97,7 @@ model EnvFeature {
 }
 
 model Feature {
-  id String @id
+  id String @id @default(uuid())
   name String
   type FeatureType
   createdBy String
@@ -104,12 +105,12 @@ model Feature {
   createdAt DateTime @default(now())
   project Project @relation(fields: [projectId], references: [id])
   projectId String
-  flows Flow[]
+  states State[]
   envFeatureToggles EnvFeature[]
 }
 
-model Flow {
-  id String @id
+model State {
+  id String @id @default(uuid())
   name String
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
