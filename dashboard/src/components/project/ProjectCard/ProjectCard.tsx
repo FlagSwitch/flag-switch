@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FC }from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
@@ -14,7 +14,26 @@ import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import HandymanOutlinedIcon from '@mui/icons-material/HandymanOutlined';
 import { StyledProjectCard } from './ProjectCard.style';
-export default function ProjectCard() {
+
+export interface ProjectCardProps {
+  project: {
+    name: string;
+    description: string;
+    _count: {
+      features: number;
+      dashboardUsers: number;
+    }
+  }
+}
+export const ProjectCard:FC<ProjectCardProps> = ({ 
+  project: {
+    name,
+    description,
+    _count: {
+      features,
+      dashboardUsers
+    }
+} }) => {
 
   return (
     <StyledProjectCard>
@@ -29,11 +48,11 @@ export default function ProjectCard() {
           </>
         }
         avatar={<Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />}
-        title="Toggle Project"
+        title={name}
       />
       <CardContent sx={{padding: '0 15px', height: '50px'}} >
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook
+          {description}
         </Typography>
       </CardContent>
       <CardActions>
@@ -47,8 +66,8 @@ export default function ProjectCard() {
         </AvatarGroup>
         <div style={{marginLeft: 'auto', display: 'flex', flexDirection: 'row', gap: '10px'}}>
           <IconCounter icon={<HandymanOutlinedIcon/>} count={100}/>
-          <IconCounter icon={<FlagOutlinedIcon/>} count={10}/>
-          <IconCounter icon={<PersonOutlineOutlinedIcon/>} count={4}/>
+          <IconCounter icon={<FlagOutlinedIcon/>} count={features}/>
+          <IconCounter icon={<PersonOutlineOutlinedIcon/>} count={dashboardUsers}/>
         </div>
         
       </CardActions>

@@ -9,10 +9,27 @@ import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { PrismaService } from './prisma.service';
 
+const CORS_OPTIONS = {
+  origin: ['http://127.0.0.1:5173'], // or '*' or whatever is required
+  allowedHeaders: [
+    'Access-Control-Allow-Origin',
+    'Origin',
+    'X-Requested-With',
+    'Accept',
+    'Content-Type',
+    'Authorization',
+  ],
+  exposedHeaders: 'Authorization',
+  credentials: true,
+  methods: ['GET', 'PUT', 'OPTIONS', 'POST', 'DELETE'],
+};
+
 async function bootstrap() {
+  const fastifyAdapter = new FastifyAdapter();
+  fastifyAdapter.enableCors(CORS_OPTIONS);
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
-    new FastifyAdapter(),
+    fastifyAdapter,
   );
   const config = new DocumentBuilder()
     .setTitle('Flag Switch Server')

@@ -28,6 +28,14 @@ export class ProjectService {
       cursor,
       where,
       orderBy,
+      include: {
+        _count: {
+          select: {
+            dashboardUsers: true,
+            features: true,
+          },
+        },
+      },
     });
   }
 

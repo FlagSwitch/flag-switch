@@ -17,12 +17,12 @@ export class AccountService {
   async accounts(params: {
     skip?: number;
     take?: number;
-    cursor?: Prisma.UserWhereUniqueInput;
-    where?: Prisma.UserWhereInput;
-    orderBy?: Prisma.UserOrderByWithRelationAndSearchRelevanceInput;
+    cursor?: Prisma.AccountWhereUniqueInput;
+    where?: Prisma.AccountWhereInput;
+    orderBy?: Prisma.AccountOrderByWithRelationAndSearchRelevanceInput;
   }): Promise<Account[]> {
     const { skip, take, cursor, where, orderBy } = params;
-    return this.prisma.user.findMany({
+    return this.prisma.account.findMany({
       skip,
       take,
       cursor,
