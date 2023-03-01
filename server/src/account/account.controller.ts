@@ -20,11 +20,11 @@ export class AccountController {
   @Put('account/:id')
   async updateAccount(
     @Param('id') { id }: UpdateAccountDtoParams,
-    @Body() updateUserDto: UpdateAccountDto,
+    @Body() updateAccountDto: UpdateAccountDto,
   ): Promise<AccountModel> {
     return this.accountService.updateAccount({
       where: { id },
-      data: updateUserDto,
+      data: updateAccountDto,
     });
   }
 }

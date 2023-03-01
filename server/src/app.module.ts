@@ -6,6 +6,8 @@ import { AccountModule } from './account/account.module';
 import { DashboardUserModule } from './dashboardUser/dashboardUser.module';
 import { ApplicationModule } from './application/application.module';
 import { EnvironmentModule } from './environment/environment.module';
+import { StateModule } from './state/state.module';
+import { EnvFeatureModule } from './envFeature/envFeature.module';
 
 @Module({
   imports: [
@@ -14,6 +16,8 @@ import { EnvironmentModule } from './environment/environment.module';
     DashboardUserModule,
     ApplicationModule,
     EnvironmentModule,
+    StateModule,
+    EnvFeatureModule,
   ],
   controllers: [AppController],
   providers: [AppService],
