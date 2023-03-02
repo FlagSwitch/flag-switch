@@ -11,19 +11,9 @@ import {
 } from '@mui/material';
 import { ConditionallyRender } from '../../../common/ConditionallyRender/ConditionallyRender';
 
-import { useStyles } from './PageHeader.style';
+import { StyledDivider, StyledHeader, StyledHeaderActions, StyledHeaderContainer, StyledHeaderTitle, StyledTopContainer } from './PageHeader.style';
 import { usePageTitle } from '../../../../hooks/usePageHeader'
 
-const StyledDivider = styled(Divider)(({ theme }) => ({
-    height: '100%',
-    borderColor: theme.palette.dividerAlternative,
-    width: '1px',
-    display: 'inline-block',
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    padding: '10px 0',
-    verticalAlign: 'middle',
-}));
 
 interface IPageHeaderProps {
     title?: string;
@@ -50,33 +40,33 @@ const PageHeaderComponent: FC<IPageHeaderProps> & {
     secondary,
     children,
 }) => {
-    const { classes: styles } = useStyles();
     const headerClasses = classnames({ skeleton: loading });
 
     usePageTitle(secondary ? '' : title);
 
     return (
-        <div className={styles.headerContainer}>
-            <div className={styles.topContainer}>
-                <div
-                    className={classnames(styles.header, headerClasses)}
+        <StyledHeaderContainer>
+            <StyledTopContainer>
+                <StyledHeader
                     data-loading
                 >
-                    <Typography
-                        variant={variant || secondary ? 'h2' : 'h1'}
-                        className={classnames(styles.headerTitle, className)}
-                    >
-                        {titleElement || title}
-                    </Typography>
-                    {subtitle && <small>{subtitle}</small>}
-                </div>
+                    <StyledHeaderTitle>
+                        <Typography
+                            variant={variant || secondary ? 'h2' : 'h1'}
+                        >
+                            {titleElement || title}
+                        </Typography>
+                        {subtitle && <small>{subtitle}</small>}
+                    </StyledHeaderTitle>
+                    
+                </StyledHeader>
                 <ConditionallyRender
                     condition={Boolean(actions)}
-                    show={<div className={styles.headerActions}>{actions}</div>}
+                    show={<StyledHeaderActions>{actions}</StyledHeaderActions>}
                 />
-            </div>
+            </StyledTopContainer>
             {children}
-        </div>
+        </StyledHeaderContainer>
     );
 };
 

@@ -1,8 +1,8 @@
 import React, { FC, ReactNode } from 'react';
 import classnames from 'classnames';
 import { PageHeader } from '../PageHeader/PageHeader';
-import { Paper, PaperProps, styled } from '@mui/material';
-import { useStyles } from './PageContent.style';
+import { PaperProps } from '@mui/material';
+import { StyledHeader, StyledPaper } from './PageContent.style';
 import { ConditionallyRender } from '../../ConditionallyRender/ConditionallyRender';
 
 interface IPageContentProps extends PaperProps {
@@ -14,21 +14,6 @@ interface IPageContentProps extends PaperProps {
     bodyClass?: string;
     headerClass?: string;
 }
-
-const StyledHeader = styled('div')(({ theme }) => ({
-    borderBottomStyle: 'solid',
-    borderBottomWidth: '1px',
-    borderBottomColor: theme.palette.divider,
-    [theme.breakpoints.down('md')]: {
-        padding: theme.spacing(3, 2),
-    },
-}));
-
-const StyledPaper = styled(Paper)(({ theme }) => ({
-    borderRadius: theme.shape.borderRadiusLarge,
-    boxShadow: 'none',
-    height: '100%'
-}));
 
 const PageContentLoading: FC<{ isLoading: boolean; children: ReactNode }> = ({
     children,
@@ -55,25 +40,6 @@ export const PageContent: FC<IPageContentProps> = ({
     className,
     ...rest
 }) => {
-    const { classes: styles } = useStyles();
-
-    const headerClasses = classnames(
-        'header',
-        headerClass || styles.headerPadding,
-        {
-            [styles.paddingDisabled]: disablePadding,
-            [styles.borderDisabled]: disableBorder,
-        }
-    );
-
-    const bodyClasses = classnames(
-        'body',
-        bodyClass ? bodyClass : styles.bodyContainer,
-        {
-            [styles.paddingDisabled]: disablePadding,
-            [styles.borderDisabled]: disableBorder,
-        }
-    );
 
     const paperProps = disableBorder ? { elevation: 0 } : {};
 
@@ -86,7 +52,7 @@ export const PageContent: FC<IPageContentProps> = ({
             <ConditionallyRender
                 condition={Boolean(header)}
                 show={
-                    <StyledHeader className={headerClasses}>
+                    <StyledHeader>
                         <ConditionallyRender
                             condition={typeof header === 'string'}
                             show={<PageHeader title={header as string} />}
@@ -95,7 +61,7 @@ export const PageContent: FC<IPageContentProps> = ({
                     </StyledHeader>
                 }
             />
-            <div className={bodyClasses}>{children}</div>
+            <div>{children}</div>
         </StyledPaper>
     );
 

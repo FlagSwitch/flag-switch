@@ -2,7 +2,7 @@
 
 import React, { ReactNode, FC } from 'react';
 
-import { useStyles } from './IconCounter.style';
+import { StyledContainer, StyledCounter, StyledIcon } from './IconCounter.style';
 
 interface IIconCounterProps {
     icon: ReactNode;
@@ -14,17 +14,16 @@ const IconCounter: FC<IIconCounterProps> = ({
     icon,
     count,
 }) => {
-    const { classes: styles } = useStyles();
 
     return (
-        <div className={styles.container}>
-            <div className={styles.icon}>
+        <StyledContainer>
+            <StyledIcon>
                 {icon}
-            </div>
-            <div className={styles.counter}>
+            </StyledIcon>
+            <StyledCounter>
                 {count}
-            </div>
-        </div>
+            </StyledCounter>
+        </StyledContainer>
     );
 };
 

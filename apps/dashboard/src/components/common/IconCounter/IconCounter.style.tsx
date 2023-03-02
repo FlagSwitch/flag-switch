@@ -1,21 +1,23 @@
-import { makeStyles } from 'tss-react/mui';
+// import { makeStyles } from 'tss-react/mui';
+import { styled } from '@mui/material/styles';
 
-export const useStyles = makeStyles()(theme => ({
-    container: {
-        display: 'flex',
-        flexDirection: 'row'
-    },
-    icon: {
-        color: theme.palette.grey[500],
-        fontSize: theme.typography.overline.fontSize,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    counter: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: theme.typography.overline.fontSize
-    },
+
+export const StyledContainer = styled('div')(({ theme }) => ({
+    display: 'flex',
+    flexDirection: 'row',
+}));
+
+export const StyledIcon = styled('div')(({ theme }) => ({
+    color: theme.palette.grey[500],
+    fontSize: theme.typography.overline.fontSize,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+}));
+
+export const StyledCounter = styled('div')(({ theme }) => ({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: theme.typography.overline.fontSize
 }));
