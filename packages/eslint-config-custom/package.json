@@ -10,7 +10,7 @@
     "eslint-plugin-react": "7.32.2"
   },
   "devDependencies": {
-    "eslint": "7.32.0",
+    "eslint": "8.34.0",
     "next": "latest",
     "react": "18.2",
     "react-dom": "18.2",
