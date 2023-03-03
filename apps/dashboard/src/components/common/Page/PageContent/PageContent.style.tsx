@@ -14,7 +14,9 @@ export const StyledHeader = styled('div')(({ theme }) => ({
 export const StyledPaper = styled(Paper)(({ theme }) => ({
     borderRadius: theme.shape.borderRadiusLarge,
     boxShadow: 'none',
-    height: '100%',
+}));
+
+export const StyledBody = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(4),
     [theme.breakpoints.down('md')]: {
         padding: theme.spacing(2),

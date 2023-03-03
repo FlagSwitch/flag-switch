@@ -2,8 +2,6 @@ import { ReactNode, FC } from 'react';
 import classnames from 'classnames';
 
 import {
-    Divider,
-    styled,
     SxProps,
     Theme,
     Typography,
@@ -48,16 +46,16 @@ const PageHeaderComponent: FC<IPageHeaderProps> & {
         <StyledHeaderContainer>
             <StyledTopContainer>
                 <StyledHeader
+                    className={classnames(headerClasses)}
                     data-loading
                 >
-                    <StyledHeaderTitle>
-                        <Typography
-                            variant={variant || secondary ? 'h2' : 'h1'}
-                        >
-                            {titleElement || title}
-                        </Typography>
-                        {subtitle && <small>{subtitle}</small>}
+                    <StyledHeaderTitle
+                        variant={variant || secondary ? 'h2' : 'h1'}
+                        className={classnames(className)}
+                    >
+                        {titleElement || title}
                     </StyledHeaderTitle>
+                    {subtitle && <small>{subtitle}</small>}
                     
                 </StyledHeader>
                 <ConditionallyRender

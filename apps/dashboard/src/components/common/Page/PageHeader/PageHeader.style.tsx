@@ -2,6 +2,7 @@
 import { styled } from '@mui/material/styles';
 import {
     Divider,
+    Typography
 } from '@mui/material';
 
 
@@ -16,31 +17,31 @@ export const StyledDivider = styled(Divider)(({ theme }) => ({
     verticalAlign: 'middle',
 }));
 
-export const StyledHeaderContainer = styled(Divider)(({ theme }) => ({
+export const StyledHeaderContainer = styled('div')(({ theme }) => ({
     display: 'flex',
     flexDirection: 'column',
 }));
 
-export const StyledTopContainer = styled(Divider)(({ theme }) => ({
+export const StyledTopContainer = styled('div')(({ theme }) => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     position: 'relative',
 }));
 
-export const StyledHeader = styled(Divider)(({ theme }) => ({
+export const StyledHeader = styled('div')(({ theme }) => ({
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     marginRight: theme.spacing(2),
 }));
 
-export const StyledHeaderTitle = styled(Divider)(({ theme }) => ({
+export const StyledHeaderTitle = styled(Typography)(({ theme }) => ({
     fontSize: theme.fontSizes.mainHeader,
     fontWeight: 'normal',
 }));
 
-export const StyledHeaderActions = styled(Divider)(({ theme }) => ({
+export const StyledHeaderActions = styled('div')(({ theme }) => ({
     display: 'flex',
     flexGrow: 1,
     justifyContent: 'flex-end',

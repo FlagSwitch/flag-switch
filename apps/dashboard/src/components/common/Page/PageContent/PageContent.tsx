@@ -2,7 +2,7 @@ import React, { FC, ReactNode } from 'react';
 import classnames from 'classnames';
 import { PageHeader } from '../PageHeader/PageHeader';
 import { PaperProps } from '@mui/material';
-import { StyledHeader, StyledPaper } from './PageContent.style';
+import { StyledHeader, StyledPaper, StyledBody } from './PageContent.style';
 import { ConditionallyRender } from '../../ConditionallyRender/ConditionallyRender';
 
 interface IPageContentProps extends PaperProps {
@@ -61,7 +61,7 @@ export const PageContent: FC<IPageContentProps> = ({
                     </StyledHeader>
                 }
             />
-            <div>{children}</div>
+            <StyledBody>{children}</StyledBody>
         </StyledPaper>
     );
 

@@ -14,16 +14,14 @@ import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import HandymanOutlinedIcon from '@mui/icons-material/HandymanOutlined';
 import { StyledProjectCard } from './ProjectCard.style';
-
-export interface ProjectCardProps {
-  project: {
-    name: string;
-    description: string;
-    _count: {
-      features: number;
-      dashboardUsers: number;
-    }
+import { Prisma } from 'prisma-client';
+type ProjectWithCount = Prisma.ProjectGetPayload<{
+  include: {
+      _count: true
   }
+}>;
+export interface ProjectCardProps {
+  project: ProjectWithCount
 }
 export const ProjectCard:FC<ProjectCardProps> = ({ 
   project: {

@@ -5,6 +5,7 @@ import {
     useQuery,
   } from '@tanstack/react-query';
 import axios from 'axios';
+import { Prisma } from 'prisma-client';
 const StyledDivContainer = styled('div')(({ theme }) => ({
     display: 'flex',
     gap: '20px',
@@ -13,10 +14,14 @@ const StyledDivContainer = styled('div')(({ theme }) => ({
         justifyContent: 'center',
     },
 }));
-
+type ProjectWithCount = Prisma.ProjectGetPayload<{
+    include: {
+        _count: true
+    }
+}>;
 export const ProjectList: FC = () => {
 
-    const { isLoading, error, data, isFetching } = useQuery<any[], Error>({
+    const { isLoading, error, data, isFetching } = useQuery<ProjectWithCount[], Error>({
         queryKey: ["repoData"],
         queryFn: () =>
           axios

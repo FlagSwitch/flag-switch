@@ -6,7 +6,6 @@ import Breadcrumbs from '../breadcrumbs/Breadcrumbs';
 import { AppBar } from '../appbar/AppBar';
 import { Sidebar } from '../sidebar/Sidebar'
 import { Outlet } from 'react-router-dom';
-import Card from '@mui/material/Card'
 import { useTheme } from '@mui/system';
 
 const DrawerHeader = styled('div')(({ theme }) => ({
