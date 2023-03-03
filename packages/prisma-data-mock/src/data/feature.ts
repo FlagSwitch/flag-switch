@@ -1,6 +1,6 @@
-import { Feature, FeatureType } from '@prisma/client';
-import { faker } from '@faker-js/faker';
-import { sample } from 'lodash';
+import { Feature, FeatureType } from "@prisma/client";
+import { faker } from "@faker-js/faker";
+import { sample } from "lodash";
 
 const createFeatureMock = (params: { projectId: string }): Feature => {
   return {

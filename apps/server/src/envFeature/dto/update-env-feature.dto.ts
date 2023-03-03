@@ -1,5 +1,5 @@
-import { IsNotEmpty, IsUUID, IsBoolean } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty, IsUUID, IsBoolean } from "class-validator";
+import { ApiProperty } from "@nestjs/swagger";
 
 export class UpdateEnvFeatureDto {
   @ApiProperty()

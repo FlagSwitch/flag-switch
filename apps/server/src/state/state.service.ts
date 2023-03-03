@@ -1,13 +1,13 @@
-import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma.service';
-import { State, Prisma } from 'prisma-client';
+import { Injectable } from "@nestjs/common";
+import { PrismaService } from "../prisma.service";
+import { State, Prisma } from "prisma-client";
 
 @Injectable()
 export class StateService {
   constructor(private prisma: PrismaService) {}
 
   async state(
-    stateWhereUniqueInput: Prisma.StateWhereUniqueInput,
+    stateWhereUniqueInput: Prisma.StateWhereUniqueInput
   ): Promise<State | null> {
     return this.prisma.state.findUnique({
       where: stateWhereUniqueInput,

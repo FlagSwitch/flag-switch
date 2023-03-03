@@ -1,28 +1,28 @@
-import React, { FC } from 'react';
-import { CssBaseline, ThemeProvider as MuiThemeProvider } from '@mui/material';
+import React, { FC } from "react";
+import { CssBaseline, ThemeProvider as MuiThemeProvider } from "@mui/material";
 
-import createCache from '@emotion/cache';
-import { CacheProvider } from '@emotion/react';
-import { useThemeMode } from '../hooks/useThemeMode';
+import createCache from "@emotion/cache";
+import { CacheProvider } from "@emotion/react";
+import { useThemeMode } from "../hooks/useThemeMode";
 
 export const muiCache = createCache({
-    key: 'mui',
-    prepend: true,
+  key: "mui",
+  prepend: true,
 });
 
 interface ThemeProviderProps {
-    children: React.ReactNode; 
-};
+  children: React.ReactNode;
+}
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
-    const { resolveTheme } = useThemeMode();
+  const { resolveTheme } = useThemeMode();
 
-    return (
-        <CacheProvider value={muiCache}>
-            <MuiThemeProvider theme={resolveTheme()}>
-                <CssBaseline />
-                {children}
-            </MuiThemeProvider>
-        </CacheProvider>
-    );
+  return (
+    <CacheProvider value={muiCache}>
+      <MuiThemeProvider theme={resolveTheme()}>
+        <CssBaseline />
+        {children}
+      </MuiThemeProvider>
+    </CacheProvider>
+  );
 };

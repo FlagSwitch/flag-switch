@@ -52,6 +52,14 @@
       ]
     },
     "lint": {
+      "cache": false,
+      "outputs": [
+        "dist/**",
+        "build/**"
+      ]
+    },
+    "lint:fix": {
+      "cache": false,
       "outputs": [
         "dist/**",
         "build/**"

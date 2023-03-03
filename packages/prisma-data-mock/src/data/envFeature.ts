@@ -1,5 +1,5 @@
-import { EnvFeature } from '@prisma/client';
-import { faker } from '@faker-js/faker';
+import { EnvFeature } from "@prisma/client";
+import { faker } from "@faker-js/faker";
 
 const createEnvFeatureMock = (params: {
   environmentId: string;

@@ -1,5 +1,5 @@
-import { DashboardUser } from '@prisma/client';
-import { faker } from '@faker-js/faker';
+import { DashboardUser } from "@prisma/client";
+import { faker } from "@faker-js/faker";
 
 const createDashboardUserMock = (params: {
   accountId: string;

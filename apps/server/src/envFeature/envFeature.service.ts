@@ -1,13 +1,13 @@
-import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma.service';
-import { EnvFeature, Prisma } from 'prisma-client';
+import { Injectable } from "@nestjs/common";
+import { PrismaService } from "../prisma.service";
+import { EnvFeature, Prisma } from "prisma-client";
 
 @Injectable()
 export class EnvFeatureService {
   constructor(private prisma: PrismaService) {}
 
   async envFeature(
-    envFeatureWhereUniqueInput: Prisma.EnvFeatureWhereUniqueInput,
+    envFeatureWhereUniqueInput: Prisma.EnvFeatureWhereUniqueInput
   ): Promise<EnvFeature | null> {
     return this.prisma.envFeature.findUnique({
       where: envFeatureWhereUniqueInput,
@@ -32,7 +32,7 @@ export class EnvFeatureService {
   }
 
   async createEnvFeature(
-    data: Prisma.EnvFeatureCreateInput,
+    data: Prisma.EnvFeatureCreateInput
   ): Promise<EnvFeature> {
     return this.prisma.envFeature.create({
       data,
@@ -51,7 +51,7 @@ export class EnvFeatureService {
   }
 
   async deleteEnvFeature(
-    where: Prisma.EnvFeatureWhereUniqueInput,
+    where: Prisma.EnvFeatureWhereUniqueInput
   ): Promise<EnvFeature> {
     return this.prisma.envFeature.delete({
       where,

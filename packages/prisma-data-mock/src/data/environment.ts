@@ -1,5 +1,5 @@
-import { Environment } from '@prisma/client';
-import { faker } from '@faker-js/faker';
+import { Environment } from "@prisma/client";
+import { faker } from "@faker-js/faker";
 
 const createEnvironmentMock = (params: { accountId: string }): Environment => {
   return {

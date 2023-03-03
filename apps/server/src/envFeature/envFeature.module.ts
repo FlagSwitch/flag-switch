@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
-import { EnvFeatureController } from './envFeature.controller';
-import { EnvFeatureService } from './envFeature.service';
-import { PrismaService } from '../prisma.service';
+import { Module } from "@nestjs/common";
+import { EnvFeatureController } from "./envFeature.controller";
+import { EnvFeatureService } from "./envFeature.service";
+import { PrismaService } from "../prisma.service";
 
 @Module({
   imports: [],

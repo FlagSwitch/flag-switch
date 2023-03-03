@@ -1,13 +1,13 @@
-import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma.service';
-import { DashboardUser, Prisma } from 'prisma-client';
+import { Injectable } from "@nestjs/common";
+import { PrismaService } from "../prisma.service";
+import { DashboardUser, Prisma } from "prisma-client";
 
 @Injectable()
 export class DashboardUserService {
   constructor(private prisma: PrismaService) {}
 
   async dashboardUser(
-    dashboardUserWhereUniqueInput: Prisma.DashboardUserWhereUniqueInput,
+    dashboardUserWhereUniqueInput: Prisma.DashboardUserWhereUniqueInput
   ): Promise<DashboardUser | null> {
     return this.prisma.dashboardUser.findUnique({
       where: dashboardUserWhereUniqueInput,
@@ -32,7 +32,7 @@ export class DashboardUserService {
   }
 
   async createDashboardUser(
-    data: Prisma.DashboardUserCreateInput,
+    data: Prisma.DashboardUserCreateInput
   ): Promise<DashboardUser> {
     return this.prisma.dashboardUser.create({
       data,
@@ -51,7 +51,7 @@ export class DashboardUserService {
   }
 
   async deleteDashboardUser(
-    where: Prisma.DashboardUserWhereUniqueInput,
+    where: Prisma.DashboardUserWhereUniqueInput
   ): Promise<DashboardUser> {
     return this.prisma.dashboardUser.delete({
       where,

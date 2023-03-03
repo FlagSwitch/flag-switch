@@ -8,36 +8,36 @@ import { Overview } from "../components/overview/Overview";
 import { States } from "../components/state/States/States";
 
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <App />,
-      children: [
-        {
-          path: "/overview",
-          element: <Overview />,
-        },
-        {
-          path: "/projects",
-          element: <Projects />,
-        },
-        {
-          path: "/features",
-          element: <Features />,
-        },
-        {
-          path: "/states",
-          element: <States />,
-        },
-        {
-          path: "/user-groups",
-          element: <UserGroups />,
-        },
-        {
-          path: "/users",
-          element: <Users />,
-        },
-      ]
-    },
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/overview",
+        element: <Overview />,
+      },
+      {
+        path: "/projects",
+        element: <Projects />,
+      },
+      {
+        path: "/features",
+        element: <Features />,
+      },
+      {
+        path: "/states",
+        element: <States />,
+      },
+      {
+        path: "/user-groups",
+        element: <UserGroups />,
+      },
+      {
+        path: "/users",
+        element: <Users />,
+      },
+    ],
+  },
 ]);
 
 export default router;

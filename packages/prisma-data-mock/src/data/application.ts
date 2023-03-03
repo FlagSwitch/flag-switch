@@ -1,5 +1,5 @@
-import { Application } from '@prisma/client';
-import { faker } from '@faker-js/faker';
+import { Application } from "@prisma/client";
+import { faker } from "@faker-js/faker";
 
 const createApplicationMock = (params: { accountId: string }): Application => {
   return {

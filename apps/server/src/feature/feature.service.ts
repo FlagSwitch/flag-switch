@@ -1,13 +1,13 @@
-import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma.service';
-import { Feature, Prisma } from 'prisma-client';
+import { Injectable } from "@nestjs/common";
+import { PrismaService } from "../prisma.service";
+import { Feature, Prisma } from "prisma-client";
 
 @Injectable()
 export class FeatureService {
   constructor(private prisma: PrismaService) {}
 
   async feature(
-    featureWhereUniqueInput: Prisma.FeatureWhereUniqueInput,
+    featureWhereUniqueInput: Prisma.FeatureWhereUniqueInput
   ): Promise<Feature | null> {
     return this.prisma.feature.findUnique({
       where: featureWhereUniqueInput,

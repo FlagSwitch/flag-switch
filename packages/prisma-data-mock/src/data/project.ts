@@ -1,5 +1,5 @@
-import { Prisma, Project, DashboardUser } from '@prisma/client';
-import { faker } from '@faker-js/faker';
+import { Prisma, DashboardUser } from "@prisma/client";
+import { faker } from "@faker-js/faker";
 
 const projectWithUsers = Prisma.validator<Prisma.ProjectArgs>()({
   include: { dashboardUsers: true },

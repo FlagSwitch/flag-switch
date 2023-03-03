@@ -13,14 +13,16 @@
     "build": "tsup",
     "clean": "rimraf .turbo node_modules dist",
     "dev": "tsup --watch",
-    "lint": "eslint \"src/**/*.ts\""
+    "lint": "eslint \"src/**/*.ts\"",
+    "lint:fix": "eslint \"src/**/*.ts\" --fix"
   },
   "dependencies": {
+    "@faker-js/faker": "^7.6.0",
     "prisma-client": "*"
   },
   "devDependencies": {
-    "eslint-config-custom": "*",
     "eslint": "^8.12.0",
+    "eslint-config-custom": "*",
     "rimraf": "^4.0.0",
     "tsconfig": "*",
     "tsup": "^6.0.0",

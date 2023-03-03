@@ -1,22 +1,22 @@
-import { Controller, Param, Post, Body, Put, Get } from '@nestjs/common';
-import { ProjectService } from './project.service';
-import { Project as ProjectModel } from '@prisma/client';
-import { CreateProjectDto } from './dto/create-project.dto';
+import { Controller, Param, Post, Body, Put, Get } from "@nestjs/common";
+import { ProjectService } from "./project.service";
+import { Project as ProjectModel } from "@prisma/client";
+import { CreateProjectDto } from "./dto/create-project.dto";
 import {
   UpdateProjectDto,
   UpdateProjectDtoParams,
-} from './dto/update-project.dto';
+} from "./dto/update-project.dto";
 @Controller()
 export class ProjectController {
   constructor(private readonly projectService: ProjectService) {}
 
-  @Get('projects')
+  @Get("projects")
   async getProjects(): Promise<ProjectModel[]> {
     return this.projectService.projects({});
   }
-  @Post('project')
+  @Post("project")
   async createProject(
-    @Body() createProjectDto: CreateProjectDto,
+    @Body() createProjectDto: CreateProjectDto
   ): Promise<ProjectModel> {
     const { name, description, accountId } = createProjectDto;
     return this.projectService.createProject({
@@ -30,10 +30,10 @@ export class ProjectController {
     });
   }
 
-  @Put('project/:id')
+  @Put("project/:id")
   async updateProject(
-    @Param('id') { id }: UpdateProjectDtoParams,
-    @Body() updateProjectDto: UpdateProjectDto,
+    @Param("id") { id }: UpdateProjectDtoParams,
+    @Body() updateProjectDto: UpdateProjectDto
   ): Promise<ProjectModel> {
     return this.projectService.updateProject({
       where: { id },

@@ -1,6 +1,6 @@
-import { IsNotEmpty, IsUUID, IsEnum } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger';
-import { FeatureType } from '@prisma/client';
+import { IsNotEmpty, IsUUID, IsEnum } from "class-validator";
+import { ApiProperty } from "@nestjs/swagger";
+import { FeatureType } from "@prisma/client";
 
 export class CreateFeatureDto {
   @ApiProperty()

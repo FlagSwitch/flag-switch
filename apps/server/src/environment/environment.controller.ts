@@ -1,18 +1,18 @@
-import { Controller, Param, Post, Body, Put } from '@nestjs/common';
-import { EnvironmentService } from './environment.service';
-import { Environment as EnvironmentModel } from '@prisma/client';
-import { CreateEnvironmentDto } from './dto/create-environment.dto';
+import { Controller, Param, Post, Body, Put } from "@nestjs/common";
+import { EnvironmentService } from "./environment.service";
+import { Environment as EnvironmentModel } from "@prisma/client";
+import { CreateEnvironmentDto } from "./dto/create-environment.dto";
 import {
   UpdateEnvironmentDtoParams,
   UpdateEnvironmentDto,
-} from './dto/update-environment.dto';
+} from "./dto/update-environment.dto";
 @Controller()
 export class EnvironmentController {
   constructor(private readonly environmentService: EnvironmentService) {}
 
-  @Post('environment')
+  @Post("environment")
   async createEnvironment(
-    @Body() createEnvironmentDto: CreateEnvironmentDto,
+    @Body() createEnvironmentDto: CreateEnvironmentDto
   ): Promise<EnvironmentModel> {
     const { name, accountId } = createEnvironmentDto;
     return this.environmentService.createEnvironment({
@@ -25,10 +25,10 @@ export class EnvironmentController {
     });
   }
 
-  @Put('environment/:id')
+  @Put("environment/:id")
   async updateEnvironment(
-    @Param('id') { id }: UpdateEnvironmentDtoParams,
-    @Body() updateEnvironmentDto: UpdateEnvironmentDto,
+    @Param("id") { id }: UpdateEnvironmentDtoParams,
+    @Body() updateEnvironmentDto: UpdateEnvironmentDto
   ): Promise<EnvironmentModel> {
     return this.environmentService.updateEnvironment({
       where: { id },

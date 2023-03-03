@@ -1,6 +1,5 @@
+import { styled } from "@mui/material/styles";
 
-import { styled } from '@mui/material/styles';
-
-export const StyledProjectListContainer = styled('div')(({ theme }) => ({
-    display: 'grid',
+export const StyledProjectListContainer = styled("div")(() => ({
+  display: "grid",
 }));

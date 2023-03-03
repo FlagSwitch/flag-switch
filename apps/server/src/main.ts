@@ -1,27 +1,27 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { NestFactory } from "@nestjs/core";
+import { AppModule } from "./app.module";
 import {
   FastifyAdapter,
   NestFastifyApplication,
-} from '@nestjs/platform-fastify';
+} from "@nestjs/platform-fastify";
 
-import { ValidationPipe } from '@nestjs/common';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { PrismaService } from './prisma.service';
+import { ValidationPipe } from "@nestjs/common";
+import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
+import { PrismaService } from "./prisma.service";
 
 const CORS_OPTIONS = {
-  origin: ['http://127.0.0.1:5173'], // or '*' or whatever is required
+  origin: ["http://127.0.0.1:5173"], // or '*' or whatever is required
   allowedHeaders: [
-    'Access-Control-Allow-Origin',
-    'Origin',
-    'X-Requested-With',
-    'Accept',
-    'Content-Type',
-    'Authorization',
+    "Access-Control-Allow-Origin",
+    "Origin",
+    "X-Requested-With",
+    "Accept",
+    "Content-Type",
+    "Authorization",
   ],
-  exposedHeaders: 'Authorization',
+  exposedHeaders: "Authorization",
   credentials: true,
-  methods: ['GET', 'PUT', 'OPTIONS', 'POST', 'DELETE'],
+  methods: ["GET", "PUT", "OPTIONS", "POST", "DELETE"],
 };
 
 async function bootstrap() {
@@ -29,20 +29,20 @@ async function bootstrap() {
   fastifyAdapter.enableCors(CORS_OPTIONS);
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
-    fastifyAdapter,
+    fastifyAdapter
   );
   const config = new DocumentBuilder()
-    .setTitle('Flag Switch Server')
-    .setDescription('Flag Switch - description')
-    .setVersion('1.0')
+    .setTitle("Flag Switch Server")
+    .setDescription("Flag Switch - description")
+    .setVersion("1.0")
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api-docs', app, document);
-  app.setGlobalPrefix('api');
+  SwaggerModule.setup("api-docs", app, document);
+  app.setGlobalPrefix("api");
   app.useGlobalPipes(new ValidationPipe());
   const prismaService = app.get(PrismaService);
   await prismaService.enableShutdownHooks(app);
-  await app.listen(3000, '0.0.0.0');
+  await app.listen(3000, "0.0.0.0");
 }
 bootstrap();

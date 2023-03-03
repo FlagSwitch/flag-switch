@@ -1,27 +1,27 @@
-import React, { ReactElement, useMemo, useState, ReactNode } from 'react';
-import { AnnouncerContext } from '../AnnouncerContext/AnnouncerContext';
-import { AnnouncerElement } from '../AnnouncerElement/AnnouncerElement';
+import React, { ReactElement, useMemo, useState, ReactNode } from "react";
+import { AnnouncerContext } from "../AnnouncerContext/AnnouncerContext";
+import { AnnouncerElement } from "../AnnouncerElement/AnnouncerElement";
 
 interface IAnnouncerProviderProps {
-    children: ReactNode;
+  children: ReactNode;
 }
 
 export const AnnouncerProvider = ({
-    children,
+  children,
 }: IAnnouncerProviderProps): ReactElement => {
-    const [announcement, setAnnouncement] = useState<string>();
+  const [announcement, setAnnouncement] = useState<string>();
 
-    const value = useMemo(
-        () => ({
-            setAnnouncement,
-        }),
-        [setAnnouncement]
-    );
+  const value = useMemo(
+    () => ({
+      setAnnouncement,
+    }),
+    [setAnnouncement]
+  );
 
-    return (
-        <AnnouncerContext.Provider value={value}>
-            {children}
-            <AnnouncerElement announcement={announcement} />
-        </AnnouncerContext.Provider>
-    );
+  return (
+    <AnnouncerContext.Provider value={value}>
+      {children}
+      <AnnouncerElement announcement={announcement} />
+    </AnnouncerContext.Provider>
+  );
 };

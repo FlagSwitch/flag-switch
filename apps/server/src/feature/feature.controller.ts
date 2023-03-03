@@ -1,18 +1,18 @@
-import { Controller, Param, Post, Body, Put } from '@nestjs/common';
-import { FeatureService } from './feature.service';
-import { Feature as FeatureModel } from '@prisma/client';
-import { CreateFeatureDto } from './dto/create-feature.dto';
+import { Controller, Param, Post, Body, Put } from "@nestjs/common";
+import { FeatureService } from "./feature.service";
+import { Feature as FeatureModel } from "@prisma/client";
+import { CreateFeatureDto } from "./dto/create-feature.dto";
 import {
   UpdateFeatureDto,
   UpdateFeatureDtoParams,
-} from './dto/update-feature.dto';
+} from "./dto/update-feature.dto";
 @Controller()
 export class FeatureController {
   constructor(private readonly featureService: FeatureService) {}
 
-  @Post('feature')
+  @Post("feature")
   async createAccount(
-    @Body() createFeatureDto: CreateFeatureDto,
+    @Body() createFeatureDto: CreateFeatureDto
   ): Promise<FeatureModel> {
     const { name, type, projectId, createdBy } = createFeatureDto;
     return this.featureService.createFeature({
@@ -27,10 +27,10 @@ export class FeatureController {
     });
   }
 
-  @Put('feature/:id')
+  @Put("feature/:id")
   async updateFeature(
-    @Param('id') { id }: UpdateFeatureDtoParams,
-    @Body() updateFeatureDto: UpdateFeatureDto,
+    @Param("id") { id }: UpdateFeatureDtoParams,
+    @Body() updateFeatureDto: UpdateFeatureDto
   ): Promise<FeatureModel> {
     return this.featureService.updateFeature({
       where: { id },

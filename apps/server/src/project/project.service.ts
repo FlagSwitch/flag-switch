@@ -1,13 +1,13 @@
-import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma.service';
-import { Project, Prisma } from 'prisma-client';
+import { Injectable } from "@nestjs/common";
+import { PrismaService } from "../prisma.service";
+import { Project, Prisma } from "prisma-client";
 
 @Injectable()
 export class ProjectService {
   constructor(private prisma: PrismaService) {}
 
   async project(
-    projectWhereUniqueInput: Prisma.ProjectWhereUniqueInput,
+    projectWhereUniqueInput: Prisma.ProjectWhereUniqueInput
   ): Promise<Project | null> {
     return this.prisma.project.findUnique({
       where: projectWhereUniqueInput,

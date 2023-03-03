@@ -1,18 +1,18 @@
-import { Controller, Param, Post, Body, Put } from '@nestjs/common';
-import { EnvFeatureService } from './envFeature.service';
-import { EnvFeature as EnvFeatureModel } from '@prisma/client';
-import { CreateEnvFeatureDto } from './dto/create-env-feature.dto';
+import { Controller, Param, Post, Body, Put } from "@nestjs/common";
+import { EnvFeatureService } from "./envFeature.service";
+import { EnvFeature as EnvFeatureModel } from "@prisma/client";
+import { CreateEnvFeatureDto } from "./dto/create-env-feature.dto";
 import {
   UpdateEnvFeatureDto,
   UpdateEnvFeatureDtoParams,
-} from './dto/update-env-feature.dto';
+} from "./dto/update-env-feature.dto";
 @Controller()
 export class EnvFeatureController {
   constructor(private readonly envFeatureService: EnvFeatureService) {}
 
-  @Post('env-feature')
+  @Post("env-feature")
   async createEnvFeature(
-    @Body() createEnvFeatureDto: CreateEnvFeatureDto,
+    @Body() createEnvFeatureDto: CreateEnvFeatureDto
   ): Promise<EnvFeatureModel> {
     const { state, updatingUser, environmentId, featureToggleId } =
       createEnvFeatureDto;
@@ -32,10 +32,10 @@ export class EnvFeatureController {
     });
   }
 
-  @Put('env-feature/:id')
+  @Put("env-feature/:id")
   async updateEnvfeature(
-    @Param('id') { id }: UpdateEnvFeatureDtoParams,
-    @Body() updateEnvFeatureDto: UpdateEnvFeatureDto,
+    @Param("id") { id }: UpdateEnvFeatureDtoParams,
+    @Body() updateEnvFeatureDto: UpdateEnvFeatureDto
   ): Promise<EnvFeatureModel> {
     return this.envFeatureService.updateEnvFeature({
       where: { id },
