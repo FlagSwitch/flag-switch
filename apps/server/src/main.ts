@@ -10,7 +10,7 @@ import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
 import { PrismaService } from "./prisma.service";
 
 const CORS_OPTIONS = {
-  origin: '*',// or '*' or whatever is required
+  origin: "*", // or '*' or whatever is required
   allowedHeaders: [
     "Access-Control-Allow-Origin",
     "Origin",

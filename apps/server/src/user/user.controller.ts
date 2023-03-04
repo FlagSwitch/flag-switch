@@ -9,14 +9,10 @@ export class UserController {
 
   @Post("user")
   async createUser(@Body() createUserDto: CreateUserDto): Promise<UserModel> {
-    const { name, accountId } = createUserDto;
+    const { name, userId } = createUserDto;
     return this.userService.createUser({
+      id: userId,
       name,
-      accout: {
-        connect: {
-          id: accountId,
-        },
-      },
     });
   }
 

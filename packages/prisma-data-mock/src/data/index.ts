@@ -1,4 +1,3 @@
-export * as AccountMocks from "./account";
 export * as ProjectMocks from "./project";
 export * as ApplicationMocks from "./application";
 export * as DashboardUserMocks from "./dashboardUser";

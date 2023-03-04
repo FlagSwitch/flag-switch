@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsUUID, IsBoolean } from "class-validator";
+import { IsNotEmpty, IsBoolean } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
 export class UpdateEnvFeatureDto {
@@ -6,10 +6,12 @@ export class UpdateEnvFeatureDto {
   @IsNotEmpty()
   @IsBoolean()
   readonly state: boolean;
-}
 
-export class UpdateEnvFeatureDtoParams {
   @ApiProperty()
-  @IsUUID()
-  id: string;
+  @IsNotEmpty()
+  readonly featureToggleId: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  readonly environmentId: string;
 }

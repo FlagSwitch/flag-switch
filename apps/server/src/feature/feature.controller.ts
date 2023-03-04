@@ -14,8 +14,9 @@ export class FeatureController {
   async createAccount(
     @Body() createFeatureDto: CreateFeatureDto
   ): Promise<FeatureModel> {
-    const { name, type, projectId, createdBy } = createFeatureDto;
+    const { featureId, name, type, projectId, createdBy } = createFeatureDto;
     return this.featureService.createFeature({
+      id: featureId,
       name,
       type,
       createdBy,

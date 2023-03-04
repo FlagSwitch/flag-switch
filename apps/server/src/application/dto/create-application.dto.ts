@@ -7,5 +7,5 @@ export class CreateApplicationDto {
 
   @ApiProperty()
   @IsNotEmpty()
-  readonly accountId: string;
+  readonly applicationId: string;
 }

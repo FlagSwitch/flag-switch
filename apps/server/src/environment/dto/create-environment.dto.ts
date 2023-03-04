@@ -7,5 +7,5 @@ export class CreateEnvironmentDto {
 
   @ApiProperty()
   @IsNotEmpty()
-  readonly accountId: string;
+  readonly environmentId: string;
 }

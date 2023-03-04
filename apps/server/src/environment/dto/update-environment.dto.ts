@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsUUID } from "class-validator";
+import { IsNotEmpty } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
 export class UpdateEnvironmentDto {
@@ -9,6 +9,6 @@ export class UpdateEnvironmentDto {
 
 export class UpdateEnvironmentDtoParams {
   @ApiProperty()
-  @IsUUID()
+  @IsNotEmpty()
   id: string;
 }

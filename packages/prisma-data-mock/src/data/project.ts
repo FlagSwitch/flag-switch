@@ -8,7 +8,6 @@ const projectWithUsers = Prisma.validator<Prisma.ProjectArgs>()({
 type ProjectWithPosts = Prisma.ProjectGetPayload<typeof projectWithUsers>;
 
 const createProjectMock = (params: {
-  accountId: string;
   dashboardUsers?: DashboardUser[];
 }): ProjectWithPosts => {
   return {
@@ -17,7 +16,6 @@ const createProjectMock = (params: {
     description: faker.lorem.sentence(),
     createdAt: faker.datatype.datetime(),
     updatedAt: faker.datatype.datetime(),
-    accountId: params.accountId,
     dashboardUsers: params.dashboardUsers || [],
   };
 };

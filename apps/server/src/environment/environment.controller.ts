@@ -14,14 +14,10 @@ export class EnvironmentController {
   async createEnvironment(
     @Body() createEnvironmentDto: CreateEnvironmentDto
   ): Promise<EnvironmentModel> {
-    const { name, accountId } = createEnvironmentDto;
+    const { name, environmentId } = createEnvironmentDto;
     return this.environmentService.createEnvironment({
+      id: environmentId,
       name,
-      account: {
-        connect: {
-          id: accountId,
-        },
-      },
     });
   }
 

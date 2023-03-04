@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsUUID } from "class-validator";
+import { IsNotEmpty } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
 export class UpdateUserDto {
@@ -8,7 +8,7 @@ export class UpdateUserDto {
 }
 
 export class UpdateUserDtoParams {
+  @IsNotEmpty()
   @ApiProperty()
-  @IsUUID()
   id: string;
 }

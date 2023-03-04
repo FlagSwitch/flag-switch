@@ -7,7 +7,7 @@ export class ApplicationService {
   constructor(private prisma: PrismaService) {}
 
   async account(
-    accountWhereUniqueInput: Prisma.AccountWhereUniqueInput
+    accountWhereUniqueInput: Prisma.ApplicationWhereUniqueInput
   ): Promise<Application | null> {
     return this.prisma.application.findUnique({
       where: accountWhereUniqueInput,

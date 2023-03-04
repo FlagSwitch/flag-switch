@@ -17,64 +17,42 @@ enum FeatureType {
 }
 
 model Application {
-  id String @id @default(uuid())
+  id String @id
   name String
-  account Account @relation(fields: [accountId], references: [id])
-  accountId String
   createdAt DateTime @default(now())
 }
 
 model DashboardUser {
-  id String @id @default(uuid())
+  id String @id
   name String
   email String @unique
   projects Project[]
-  account Account @relation(fields: [accountId], references: [id])
-  accountId String
-  updatedAt DateTime @updatedAt @default(now())
-  createdAt DateTime @default(now())
-}
-
-model Account {
-  id String @id @default(uuid())
-  name String
-  apps Application[]
-  projects Project[]
-  environments Environment[]
-  users User[]
-  dashboardUsers DashboardUser[]
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
 }
 
 model User {
-  id String @id @default(uuid())
+  id String @id
   name String
-  accout Account @relation(fields: [accountId], references: [id])
-  accountId String
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
 }
 
 model Environment {
-  id String @id @default(uuid())
+  id String @id
   name String
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
   projects Project[]
   envFeatureToggles EnvFeature[]
-  account Account @relation(fields: [accountId], references: [id])
-  accountId String
 }
 
 model Project {
-  id String @id @default(uuid())
+  id String @id
   name String
   description String
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
-  account Account @relation(fields: [accountId], references: [id])
-  accountId String
   dashboardUsers DashboardUser[]
   environments Environment[]
   features Feature[]
@@ -82,7 +60,6 @@ model Project {
 }
 
 model EnvFeature {
-  id String @id @default(uuid())
   state Boolean
   updatingUser String
   queriedAt DateTime?
@@ -93,10 +70,12 @@ model EnvFeature {
   featureToggle Feature @relation(fields: [featureToggleId], references: [id])
   featureToggleId String
   version Int @default(0)
+
+  @@id([featureToggleId, environmentId])
 }
 
 model Feature {
-  id String @id @default(uuid())
+  id String @id
   name String
   type FeatureType
   createdBy String
@@ -109,7 +88,7 @@ model Feature {
 }
 
 model State {
-  id String @id @default(uuid())
+  id String @id
   name String
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())

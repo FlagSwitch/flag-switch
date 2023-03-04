@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsUUID } from "class-validator";
+import { IsNotEmpty } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
 
 export class CreateStateDto {
@@ -8,6 +8,9 @@ export class CreateStateDto {
 
   @ApiProperty()
   @IsNotEmpty()
-  @IsUUID()
+  readonly stateId: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
   readonly projectId: string;
 }

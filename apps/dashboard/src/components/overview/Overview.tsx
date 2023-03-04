@@ -2,7 +2,6 @@ import { FC } from "react";
 import Chart from "react-apexcharts";
 
 const useChartOptions = () => {
-
   return {
     series: [
       {

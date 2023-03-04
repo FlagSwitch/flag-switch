@@ -18,15 +18,11 @@ export class ProjectController {
   async createProject(
     @Body() createProjectDto: CreateProjectDto
   ): Promise<ProjectModel> {
-    const { name, description, accountId } = createProjectDto;
+    const { name, description, projectId } = createProjectDto;
     return this.projectService.createProject({
+      id: projectId,
       name,
       description,
-      account: {
-        connect: {
-          id: accountId,
-        },
-      },
     });
   }
 

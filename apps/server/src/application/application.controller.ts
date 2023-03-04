@@ -15,14 +15,10 @@ export class AccountController {
   async createAccount(
     @Body() createApplicationDto: CreateApplicationDto
   ): Promise<ApplicationModel> {
-    const { name, accountId } = createApplicationDto;
+    const { name, applicationId } = createApplicationDto;
     return this.applicationService.createApplication({
+      id: applicationId,
       name,
-      account: {
-        connect: {
-          id: accountId,
-        },
-      },
     });
   }
 

@@ -6,7 +6,6 @@ const createEnvFeatureMock = (params: {
   featureToggleId: string;
 }): EnvFeature => {
   return {
-    id: faker.datatype.uuid(),
     state: faker.datatype.boolean(),
     updatingUser: faker.name.fullName(),
     queriedAt: faker.datatype.datetime(),

@@ -8,7 +8,7 @@ export class CreateProjectDto {
 
   @ApiProperty()
   @IsNotEmpty()
-  readonly accountId: string;
+  readonly projectId: string;
 
   @ApiProperty()
   @IsNotEmpty()

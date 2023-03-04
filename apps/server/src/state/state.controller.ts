@@ -12,8 +12,9 @@ export class StateController {
   async createState(
     @Body() createStateDto: CreateStateDto
   ): Promise<StateModel> {
-    const { name, projectId } = createStateDto;
+    const { name, projectId, stateId } = createStateDto;
     return this.stateService.createState({
+      id: stateId,
       name,
       project: {
         connect: {

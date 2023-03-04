@@ -14,15 +14,11 @@ export class DashboardUserController {
   async createDashboardUser(
     @Body() createDashboardUserDto: CreateDashboardUserDto
   ): Promise<DashboardUserModel> {
-    const { name, email, accountId } = createDashboardUserDto;
+    const { name, email, dashboardUserId } = createDashboardUserDto;
     return this.dashboardUserService.createDashboardUser({
+      id: dashboardUserId,
       name,
       email,
-      account: {
-        connect: {
-          id: accountId,
-        },
-      },
     });
   }
 
