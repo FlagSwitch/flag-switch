@@ -3,7 +3,7 @@ import classnames from "classnames";
 import { PageHeader } from "../PageHeader/PageHeader";
 import { PaperProps } from "@mui/material";
 import { StyledHeader, StyledPaper, StyledBody } from "./PageContent.style";
-import { ConditionallyRender } from "../../ConditionallyRender/ConditionallyRender";
+import { ConditionallyRender } from "components/common/ConditionallyRender/ConditionallyRender";
 
 interface IPageContentProps extends PaperProps {
   header?: ReactNode;
