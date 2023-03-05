@@ -15,7 +15,7 @@ export class FeatureController {
     @Body() createFeatureDto: CreateFeatureDto
   ): Promise<FeatureModel> {
     const { featureId, name, type, projectId, createdBy } = createFeatureDto;
-    return this.featureService.createFeature({
+    return this.featureService.create({
       id: featureId,
       name,
       type,
@@ -33,7 +33,7 @@ export class FeatureController {
     @Param("id") { id }: UpdateFeatureDtoParams,
     @Body() updateFeatureDto: UpdateFeatureDto
   ): Promise<FeatureModel> {
-    return this.featureService.updateFeature({
+    return this.featureService.update({
       where: { id },
       data: updateFeatureDto,
     });

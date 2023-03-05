@@ -6,7 +6,7 @@ import { DashboardUser, Prisma } from "prisma-client";
 export class DashboardUserService {
   constructor(private prisma: PrismaService) {}
 
-  async dashboardUser(
+  async findOne(
     dashboardUserWhereUniqueInput: Prisma.DashboardUserWhereUniqueInput
   ): Promise<DashboardUser | null> {
     return this.prisma.dashboardUser.findUnique({
@@ -14,7 +14,7 @@ export class DashboardUserService {
     });
   }
 
-  async dashboardUsers(params: {
+  async findMany(params: {
     skip?: number;
     take?: number;
     cursor?: Prisma.DashboardUserWhereUniqueInput;
@@ -31,15 +31,13 @@ export class DashboardUserService {
     });
   }
 
-  async createDashboardUser(
-    data: Prisma.DashboardUserCreateInput
-  ): Promise<DashboardUser> {
+  async create(data: Prisma.DashboardUserCreateInput): Promise<DashboardUser> {
     return this.prisma.dashboardUser.create({
       data,
     });
   }
 
-  async updateDashboardUser(params: {
+  async update(params: {
     where: Prisma.DashboardUserWhereUniqueInput;
     data: Prisma.DashboardUserUpdateInput;
   }): Promise<DashboardUser> {
@@ -50,7 +48,7 @@ export class DashboardUserService {
     });
   }
 
-  async deleteDashboardUser(
+  async softDelete(
     where: Prisma.DashboardUserWhereUniqueInput
   ): Promise<DashboardUser> {
     return this.prisma.dashboardUser.delete({

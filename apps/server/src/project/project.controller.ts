@@ -18,12 +18,7 @@ export class ProjectController {
   async createProject(
     @Body() createProjectDto: CreateProjectDto
   ): Promise<ProjectModel> {
-    const { name, description, projectId } = createProjectDto;
-    return this.projectService.createProject({
-      id: projectId,
-      name,
-      description,
-    });
+    return this.projectService.createProject(createProjectDto);
   }
 
   @Put("project/:id")

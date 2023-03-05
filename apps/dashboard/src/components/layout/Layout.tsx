@@ -35,7 +35,7 @@ export default function MiniDrawer() {
         <div style={{ paddingLeft: "5px" }}>
           <Breadcrumbs />
         </div>
-        <div style={{ paddingTop: "5px" }}>
+        <div style={{ paddingTop: "5px", height: "100%" }}>
           <Outlet />
         </div>
       </Box>

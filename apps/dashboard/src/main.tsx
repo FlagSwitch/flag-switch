@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider } from "react-router-dom";
-import router from "./router";
+import App from "./App";
 import { ThemeProvider } from "./themes/ThemeProvider";
 import { AnnouncerProvider } from "./components/common/Announcer/AnnouncerProvider/AnnouncerProvider";
 import UIProvider from "./providers/UIProvider/UIProvider";
@@ -14,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <ThemeProvider>
         <AnnouncerProvider>
           <SidePanelProvider>
-            <RouterProvider router={router} />
+            <App />
           </SidePanelProvider>
         </AnnouncerProvider>
       </ThemeProvider>

@@ -8,12 +8,31 @@ datasource db {
   url = "postgresql://postgres:postgres@127.0.0.1:5432/db"// env("DATABASE_URL")
 }
 
+model Forgot {
+  id String @id @default(uuid())
+  hash String @unique
+  dashboardUser DashboardUser @relation(fields: [dashboardUserId], references: [id])
+  dashboardUserId Int
+  createdAt DateTime @default(now())
+  deletedAt DateTime?
+}
+
 enum FeatureType {
   Release
   GradualRollout
   Permission
   Experimental
   Operational
+}
+
+enum RoleEnum {
+  Admin
+  User
+}
+
+enum StatusEnum {
+  Active
+  Inactive
 }
 
 model Application {
@@ -23,12 +42,19 @@ model Application {
 }
 
 model DashboardUser {
-  id String @id
-  name String
+  id Int @id @default(autoincrement())
+  role RoleEnum
+  status StatusEnum
+  hash String? @unique
+  password String
+  previousPassword String?
+  name String?
   email String @unique
   projects Project[]
+  forgots Forgot[]
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
+  deletedAt DateTime?
 }
 
 model User {

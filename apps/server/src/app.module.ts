@@ -9,9 +9,49 @@ import { StateModule } from "./state/state.module";
 import { EnvFeatureModule } from "./envFeature/envFeature.module";
 import { FeatureModule } from "./feature/feature.module";
 import { ProjectModule } from "./project/project.module";
+import { ConfigModule, ConfigService } from "@nestjs/config";
+import databaseConfig from "./config/database.config";
+import authConfig from "./config/auth.config";
+import appConfig from "./config/app.config";
+import { MailConfigService } from "./mail/mail-config.service";
+import mailConfig from "./config/mail.config";
+import { I18nModule, HeaderResolver } from "nestjs-i18n";
+import { AuthModule } from "./auth/auth.module";
+import { MailerModule } from "@nestjs-modules/mailer";
+import { ForgotModule } from "./forgot/forgot.module";
+import { MailModule } from "./mail/mail.module";
+import path from "path";
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [databaseConfig, authConfig, appConfig, mailConfig],
+      envFilePath: [".env"],
+    }),
+    MailerModule.forRootAsync({
+      useClass: MailConfigService,
+    }),
+    I18nModule.forRootAsync({
+      useFactory: (configService: ConfigService) => ({
+        fallbackLanguage: configService.get("app.fallbackLanguage"),
+        loaderOptions: { path: path.join(__dirname, "/i18n/"), watch: true },
+      }),
+      resolvers: [
+        {
+          use: HeaderResolver,
+          useFactory: (configService: ConfigService) => {
+            return [configService.get("app.headerLanguage")];
+          },
+          inject: [ConfigService],
+        },
+      ],
+      imports: [ConfigModule],
+      inject: [ConfigService],
+    }),
+    AuthModule,
+    MailModule,
+    ForgotModule,
     UserModule,
     DashboardUserModule,
     ApplicationModule,

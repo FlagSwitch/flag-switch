@@ -12,7 +12,7 @@ import {
   StyledSmallLogo,
 } from "./Appbar.style";
 import smallImageSrc from "../../assets/jpeg/flagSwitchSmall.jpeg";
-import { DarkModeSwitch } from "react-toggle-dark-mode";
+import { DarkModeSwitch } from "components/common/switches/DarkModeSwitch/DarkModeSwitch";
 import { Account } from "../account/Account";
 import { useThemeMode } from "../../hooks/useThemeMode";
 import Divider from "@mui/material/Divider";
@@ -75,11 +75,8 @@ export const AppBar: FC = () => {
             >
               <LanguageMenu />
               <DarkModeSwitch
-                checked={themeMode === "dark"}
-                onChange={onSetThemeMode}
-                sunColor="#0098e5"
-                moonColor="#59d0ff"
-                size={20}
+                checked={themeMode === "light"}
+                handleChange={onSetThemeMode}
               />
               <Account />
             </Stack>
