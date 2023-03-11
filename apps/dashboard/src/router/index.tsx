@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import { App } from "../App";
+import { App } from "../Frame";
 import { Projects } from "../components/project/Projects/Projects";
+import { CreateProject } from "../components/project/CreateProject/CreateProject";
 import { Features } from "../components/feature/Features/Features";
 import { Users } from "../components/user/Users/Users";
 import { UserGroups } from "../components/userGroup/UserGroups/UserGroups";
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/projects",
         element: <Projects />,
+      },
+      {
+        path: "/projects/create",
+        element: <CreateProject />,
       },
       {
         path: "/features",

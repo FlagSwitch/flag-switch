@@ -8,7 +8,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import IconCounter from "components/common/IconCounter/IconCounter";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
-import { FavoriteIconButton } from "components/common/FavoriteIconButton/FavoriteIconButton";
+import { FavoriteIconButton } from "components/common/switches/FavoriteIconButton/FavoriteIconButton";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import HandymanOutlinedIcon from "@mui/icons-material/HandymanOutlined";

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { IconButton, IconButtonProps } from "@mui/material";
-import { ConditionallyRender } from "../ConditionallyRender/ConditionallyRender";
+import { ConditionallyRender } from "../../ConditionallyRender/ConditionallyRender";
 import {
   Star as StarIcon,
   StarBorder as StarBorderIcon,

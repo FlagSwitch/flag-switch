@@ -6,7 +6,7 @@ import { Feature, Prisma } from "prisma-client";
 export class FeatureService {
   constructor(private prisma: PrismaService) {}
 
-  async feature(
+  async findOne(
     featureWhereUniqueInput: Prisma.FeatureWhereUniqueInput
   ): Promise<Feature | null> {
     return this.prisma.feature.findUnique({
@@ -14,7 +14,7 @@ export class FeatureService {
     });
   }
 
-  async features(params: {
+  async findMany(params: {
     skip?: number;
     take?: number;
     cursor?: Prisma.FeatureWhereUniqueInput;
@@ -31,13 +31,13 @@ export class FeatureService {
     });
   }
 
-  async createFeature(data: Prisma.FeatureCreateInput): Promise<Feature> {
+  async create(data: Prisma.FeatureCreateInput): Promise<Feature> {
     return this.prisma.feature.create({
       data,
     });
   }
 
-  async updateFeature(params: {
+  async update(params: {
     where: Prisma.FeatureWhereUniqueInput;
     data: Prisma.FeatureUpdateInput;
   }): Promise<Feature> {
@@ -48,7 +48,7 @@ export class FeatureService {
     });
   }
 
-  async deleteFeature(where: Prisma.FeatureWhereUniqueInput): Promise<Feature> {
+  async softDelete(where: Prisma.FeatureWhereUniqueInput): Promise<Feature> {
     return this.prisma.feature.delete({
       where,
     });
