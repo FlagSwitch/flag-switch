@@ -1,12 +1,12 @@
 import { Injectable } from "@nestjs/common";
-import { PrismaService } from "../prisma.service";
+import { PrismaService } from "../prisma/prisma.service";
 import { EnvFeature, Prisma } from "prisma-client";
 
 @Injectable()
 export class EnvFeatureService {
   constructor(private prisma: PrismaService) {}
 
-  async envFeature(
+  async findOne(
     envFeatureWhereUniqueInput: Prisma.EnvFeatureWhereUniqueInput
   ): Promise<EnvFeature | null> {
     return this.prisma.envFeature.findUnique({
@@ -14,7 +14,7 @@ export class EnvFeatureService {
     });
   }
 
-  async envFeatures(params: {
+  async findMany(params: {
     skip?: number;
     take?: number;
     cursor?: Prisma.EnvFeatureWhereUniqueInput;
@@ -31,7 +31,7 @@ export class EnvFeatureService {
     });
   }
 
-  async createEnvFeature(
+  async create(
     data: Prisma.EnvFeatureCreateInput
   ): Promise<EnvFeature> {
     return this.prisma.envFeature.create({
@@ -39,7 +39,7 @@ export class EnvFeatureService {
     });
   }
 
-  async updateEnvFeature(params: {
+  async update(params: {
     where: Prisma.EnvFeatureWhereUniqueInput;
     data: Prisma.EnvFeatureUpdateInput;
   }): Promise<EnvFeature> {
@@ -50,7 +50,7 @@ export class EnvFeatureService {
     });
   }
 
-  async deleteEnvFeature(
+  async softDelete(
     where: Prisma.EnvFeatureWhereUniqueInput
   ): Promise<EnvFeature> {
     return this.prisma.envFeature.delete({

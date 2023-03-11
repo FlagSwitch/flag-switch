@@ -1,12 +1,12 @@
 import { Injectable } from "@nestjs/common";
-import { PrismaService } from "../prisma.service";
+import { PrismaService } from "../prisma/prisma.service";
 import { Environment, Prisma } from "prisma-client";
 
 @Injectable()
 export class EnvironmentService {
   constructor(private prisma: PrismaService) {}
 
-  async environment(
+  async findOne(
     environmentWhereUniqueInput: Prisma.EnvironmentWhereUniqueInput
   ): Promise<Environment | null> {
     return this.prisma.environment.findUnique({
@@ -14,7 +14,7 @@ export class EnvironmentService {
     });
   }
 
-  async environments(params: {
+  async findMany(params: {
     skip?: number;
     take?: number;
     cursor?: Prisma.EnvironmentWhereUniqueInput;
@@ -31,7 +31,7 @@ export class EnvironmentService {
     });
   }
 
-  async createEnvironment(
+  async create(
     data: Prisma.EnvironmentCreateInput
   ): Promise<Environment> {
     return this.prisma.environment.create({
@@ -39,7 +39,7 @@ export class EnvironmentService {
     });
   }
 
-  async updateEnvironment(params: {
+  async update(params: {
     where: Prisma.EnvironmentWhereUniqueInput;
     data: Prisma.EnvironmentUpdateInput;
   }): Promise<Environment> {
@@ -50,7 +50,7 @@ export class EnvironmentService {
     });
   }
 
-  async deleteEnvironment(
+  async softDelete(
     where: Prisma.EnvironmentWhereUniqueInput
   ): Promise<Environment> {
     return this.prisma.user.delete({

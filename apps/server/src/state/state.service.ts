@@ -1,12 +1,12 @@
 import { Injectable } from "@nestjs/common";
-import { PrismaService } from "../prisma.service";
+import { PrismaService } from "../prisma/prisma.service";
 import { State, Prisma } from "prisma-client";
 
 @Injectable()
 export class StateService {
   constructor(private prisma: PrismaService) {}
 
-  async state(
+  async findOne(
     stateWhereUniqueInput: Prisma.StateWhereUniqueInput
   ): Promise<State | null> {
     return this.prisma.state.findUnique({
@@ -14,7 +14,7 @@ export class StateService {
     });
   }
 
-  async states(params: {
+  async findMany(params: {
     skip?: number;
     take?: number;
     cursor?: Prisma.StateWhereUniqueInput;
@@ -31,13 +31,13 @@ export class StateService {
     });
   }
 
-  async createState(data: Prisma.StateCreateInput): Promise<State> {
+  async create(data: Prisma.StateCreateInput): Promise<State> {
     return this.prisma.state.create({
       data,
     });
   }
 
-  async updateState(params: {
+  async update(params: {
     where: Prisma.StateWhereUniqueInput;
     data: Prisma.StateUpdateInput;
   }): Promise<State> {
@@ -48,7 +48,7 @@ export class StateService {
     });
   }
 
-  async deleteState(where: Prisma.ProjectWhereUniqueInput): Promise<State> {
+  async softDelete(where: Prisma.ProjectWhereUniqueInput): Promise<State> {
     return this.prisma.state.delete({
       where,
     });

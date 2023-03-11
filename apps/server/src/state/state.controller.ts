@@ -3,17 +3,22 @@ import { StateService } from "./state.service";
 import { State as StateModel } from "@prisma/client";
 import { CreateStateDto } from "./dto/create-state.dto";
 import { UpdateStateDto, UpdateStateDtoParams } from "./dto/update-state.dto";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
-@Controller()
+@ApiTags("State")
+@Controller({
+  path: 'state'
+})
 export class StateController {
   constructor(private readonly stateService: StateService) {}
 
-  @Post("state")
+  @ApiBearerAuth()
+  @Post()
   async createState(
     @Body() createStateDto: CreateStateDto
   ): Promise<StateModel> {
     const { name, projectId, stateId } = createStateDto;
-    return this.stateService.createState({
+    return this.stateService.create({
       id: stateId,
       name,
       project: {
@@ -24,12 +29,13 @@ export class StateController {
     });
   }
 
-  @Put("state/:id")
+  @ApiBearerAuth()
+  @Put(":id")
   async updateState(
     @Param("id") { id }: UpdateStateDtoParams,
     @Body() updateStateDto: UpdateStateDto
   ): Promise<StateModel> {
-    return this.stateService.updateState({
+    return this.stateService.update({
       where: { id },
       data: updateStateDto,
     });

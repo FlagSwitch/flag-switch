@@ -5,11 +5,17 @@ import {
   UpdateDashboardUserDto,
   UpdateDashboardUserDtoParams,
 } from "./dto/update-dashboard-user.dto";
-@Controller()
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
+
+@ApiTags("Dashboard User")
+@Controller({
+  path: 'dashboard-user'
+})
 export class DashboardUserController {
   constructor(private readonly dashboardUserService: DashboardUserService) {}
 
-  @Put("dashboard-user/:id")
+  @ApiBearerAuth()
+  @Put(":id")
   async updateUser(
     @Param("id") { id }: UpdateDashboardUserDtoParams,
     @Body() updateDashboardUserDto: UpdateDashboardUserDto

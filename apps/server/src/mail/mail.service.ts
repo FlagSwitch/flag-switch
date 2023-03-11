@@ -11,20 +11,20 @@ export class MailService {
     private configService: ConfigService
   ) {}
 
-  async userSignUp(mailData: MailData<{ hash: string }>) {
+  async userSignUp(mailData: MailData<{ token: string }>) {
     const i18n = I18nContext.current();
 
     await this.mailerService.sendMail({
       to: mailData.to,
       subject: i18n.t("common.confirmEmail"),
       text: `${this.configService.get("app.frontendDomain")}/confirm-email/${
-        mailData.data.hash
+        mailData.data.token
       } ${i18n.t("common.confirmEmail")}`,
       template: "activation",
       context: {
         title: i18n.t("common.confirmEmail"),
         url: `${this.configService.get("app.frontendDomain")}/confirm-email/${
-          mailData.data.hash
+          mailData.data.token
         }`,
         actionTitle: i18n.t("common.confirmEmail"),
         app_name: this.configService.get("app.name"),
@@ -35,20 +35,20 @@ export class MailService {
     });
   }
 
-  async forgotPassword(mailData: MailData<{ hash: string }>) {
+  async forgotPassword(mailData: MailData<{ token: string }>) {
     const i18n = I18nContext.current();
 
     await this.mailerService.sendMail({
       to: mailData.to,
       subject: i18n.t("common.resetPassword"),
       text: `${this.configService.get("app.frontendDomain")}/password-change/${
-        mailData.data.hash
+        mailData.data.token
       } ${i18n.t("common.resetPassword")}`,
       template: "reset-password",
       context: {
         title: i18n.t("common.resetPassword"),
         url: `${this.configService.get("app.frontendDomain")}/password-change/${
-          mailData.data.hash
+          mailData.data.token
         }`,
         actionTitle: i18n.t("common.resetPassword"),
         app_name: this.configService.get("app.name"),
