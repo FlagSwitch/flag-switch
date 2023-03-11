@@ -6,27 +6,35 @@ import {
   UpdateProjectDto,
   UpdateProjectDtoParams,
 } from "./dto/update-project.dto";
-@Controller()
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
+
+@ApiTags("Project")
+@Controller({
+  path: "project",
+})
 export class ProjectController {
   constructor(private readonly projectService: ProjectService) {}
 
-  @Get("projects")
+  @ApiBearerAuth()
+  @Get()
   async getProjects(): Promise<ProjectModel[]> {
-    return this.projectService.projects({});
+    return this.projectService.findMany({});
   }
-  @Post("project")
+  @ApiBearerAuth()
+  @Post()
   async createProject(
     @Body() createProjectDto: CreateProjectDto
   ): Promise<ProjectModel> {
-    return this.projectService.createProject(createProjectDto);
+    return this.projectService.create(createProjectDto);
   }
 
-  @Put("project/:id")
+  @ApiBearerAuth()
+  @Put(":id")
   async updateProject(
     @Param("id") { id }: UpdateProjectDtoParams,
     @Body() updateProjectDto: UpdateProjectDto
   ): Promise<ProjectModel> {
-    return this.projectService.updateProject({
+    return this.projectService.update({
       where: { id },
       data: updateProjectDto,
     });

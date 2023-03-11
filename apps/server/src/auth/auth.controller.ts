@@ -6,7 +6,6 @@ import {
   HttpStatus,
   Request,
   Post,
-  UseGuards,
   Patch,
   Delete,
   SerializeOptions,
@@ -18,8 +17,8 @@ import { AuthForgotPasswordDto } from "./dto/auth-forgot-password.dto";
 import { AuthConfirmEmailDto } from "./dto/auth-confirm-email.dto";
 import { AuthResetPasswordDto } from "./dto/auth-reset-password.dto";
 import { AuthUpdateDto } from "./dto/auth-update.dto";
-import { AuthGuard } from "@nestjs/passport";
 import { AuthRegisterLoginDto } from "./dto/auth-register-login.dto";
+import { Public } from "src/auth/decorators/public";
 
 @ApiTags("Auth")
 @Controller({
@@ -29,6 +28,7 @@ import { AuthRegisterLoginDto } from "./dto/auth-register-login.dto";
 export class AuthController {
   constructor(public service: AuthService) {}
 
+  @Public()
   @SerializeOptions({
     groups: ["me"],
   })
@@ -38,6 +38,7 @@ export class AuthController {
     return this.service.validateLogin(loginDto, false);
   }
 
+  @Public()
   @SerializeOptions({
     groups: ["me"],
   })
@@ -47,29 +48,33 @@ export class AuthController {
     return this.service.validateLogin(loginDTO, true);
   }
 
+  @Public()
   @Post("email/register")
   @HttpCode(HttpStatus.CREATED)
   async register(@Body() createUserDto: AuthRegisterLoginDto) {
     return this.service.register(createUserDto);
   }
 
+  @Public()
   @Post("email/confirm")
   @HttpCode(HttpStatus.OK)
   async confirmEmail(@Body() confirmEmailDto: AuthConfirmEmailDto) {
-    return this.service.confirmEmail(confirmEmailDto.hash);
+    return this.service.confirmEmail(confirmEmailDto.token);
   }
 
+  @Public()
   @Post("forgot/password")
   @HttpCode(HttpStatus.OK)
   async forgotPassword(@Body() forgotPasswordDto: AuthForgotPasswordDto) {
     return this.service.forgotPassword(forgotPasswordDto.email);
   }
 
+  @Public()
   @Post("reset/password")
   @HttpCode(HttpStatus.OK)
   async resetPassword(@Body() resetPasswordDto: AuthResetPasswordDto) {
     return this.service.resetPassword(
-      resetPasswordDto.hash,
+      resetPasswordDto.token,
       resetPasswordDto.password
     );
   }
@@ -79,7 +84,6 @@ export class AuthController {
     groups: ["me"],
   })
   @Get("me")
-  @UseGuards(AuthGuard("jwt"))
   @HttpCode(HttpStatus.OK)
   public async me(@Request() request) {
     return this.service.me(request.user);
@@ -90,7 +94,6 @@ export class AuthController {
     groups: ["me"],
   })
   @Patch("me")
-  @UseGuards(AuthGuard("jwt"))
   @HttpCode(HttpStatus.OK)
   public async update(@Request() request, @Body() userDto: AuthUpdateDto) {
     return this.service.update(request.user, userDto);
@@ -98,7 +101,6 @@ export class AuthController {
 
   @ApiBearerAuth()
   @Delete("me")
-  @UseGuards(AuthGuard("jwt"))
   @HttpCode(HttpStatus.OK)
   public async delete(@Request() request) {
     return this.service.softDelete(request.user);

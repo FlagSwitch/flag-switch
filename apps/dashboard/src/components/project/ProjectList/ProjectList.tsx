@@ -1,11 +1,13 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { ProjectCard } from "../ProjectCard/ProjectCard";
 import { useQuery } from "@tanstack/react-query";
-import axios, { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 import { ProjectWithRelationsCount } from "prisma-client";
 import { StyledDivContainer } from "./ProjectList.style";
+import { useAxios } from "contexts/AxiosContext";
 
 export const ProjectList: FC = () => {
+  const axios = useAxios();
   const { isLoading, error, data } = useQuery<
     ProjectWithRelationsCount[],
     Error
@@ -13,7 +15,7 @@ export const ProjectList: FC = () => {
     queryKey: ["repoData"],
     queryFn: () =>
       axios
-        .get("http://localhost:3000/api/projects")
+        .get("http://localhost:3000/api/project")
         .then(
           (res: AxiosResponse<ProjectWithRelationsCount[], Error>) => res.data
         ),

@@ -10,7 +10,7 @@ datasource db {
 
 model Forgot {
   id String @id @default(uuid())
-  hash String @unique
+  token String @unique
   dashboardUser DashboardUser @relation(fields: [dashboardUserId], references: [id])
   dashboardUserId Int
   createdAt DateTime @default(now())
@@ -45,7 +45,7 @@ model DashboardUser {
   id Int @id @default(autoincrement())
   role RoleEnum
   status StatusEnum
-  hash String? @unique
+  registrationToken String? @unique
   password String
   previousPassword String?
   name String?
@@ -79,6 +79,7 @@ model Project {
   description String
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
+  deletedAt DateTime?
   dashboardUsers DashboardUser[]
   environments Environment[]
   features Feature[]
