@@ -3,25 +3,32 @@ import { UserService } from "./user.service";
 import { User as UserModel } from "@prisma/client";
 import { CreateUserDto } from "./dto/create-user.dto";
 import { UpdateUserDto, UpdateUserDtoParams } from "./dto/update-user.dto";
-@Controller()
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
+
+@ApiTags("User")
+@Controller({
+  path: 'user'
+})
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post("user")
+  @ApiBearerAuth()
+  @Post()
   async createUser(@Body() createUserDto: CreateUserDto): Promise<UserModel> {
     const { name, userId } = createUserDto;
-    return this.userService.createUser({
+    return this.userService.create({
       id: userId,
       name,
     });
   }
 
-  @Put("user/:id")
+  @ApiBearerAuth()
+  @Put(":id")
   async updateUser(
     @Param("id") { id }: UpdateUserDtoParams,
     @Body() updateUserDto: UpdateUserDto
   ): Promise<UserModel> {
-    return this.userService.updateUser({
+    return this.userService.update({
       where: { id },
       data: updateUserDto,
     });

@@ -72,30 +72,33 @@ export class AuthService {
   }
 
   async register(dto: AuthRegisterLoginDto): Promise<void> {
-    const hash = crypto
+    const token = crypto
       .createHash("sha256")
       .update(randomStringGenerator())
       .digest("hex");
 
+    const salt = await bcrypt.genSalt();
+
     const user = await this.dashboardUserService.create({
       ...dto,
+      password: await bcrypt.hash(dto.password, salt),
       email: dto.email,
       role: RoleEnum.User,
       status: StatusEnum.Inactive,
-      hash,
+      registrationToken: token,
     });
 
     await this.mailService.userSignUp({
       to: user.email,
       data: {
-        hash,
+        token,
       },
     });
   }
 
-  async confirmEmail(hash: string): Promise<void> {
+  async confirmEmail(token: string): Promise<void> {
     const dashboardUser = await this.dashboardUserService.findOne({
-      hash,
+      registrationToken: token,
     });
 
     if (!dashboardUser) {
@@ -110,7 +113,7 @@ export class AuthService {
     await this.dashboardUserService.update({
       where: { id: dashboardUser.id },
       data: {
-        hash: null,
+        registrationToken: null,
         status: StatusEnum.Active,
       },
     });
@@ -132,12 +135,12 @@ export class AuthService {
         HttpStatus.UNPROCESSABLE_ENTITY
       );
     } else {
-      const hash = crypto
+      const token = crypto
         .createHash("sha256")
         .update(randomStringGenerator())
         .digest("hex");
       await this.forgotService.create({
-        hash,
+        token,
         dashboardUser: {
           connect: {
             id: dashboardUser.id,
@@ -148,15 +151,15 @@ export class AuthService {
       await this.mailService.forgotPassword({
         to: email,
         data: {
-          hash,
+          token,
         },
       });
     }
   }
 
-  async resetPassword(hash: string, password: string): Promise<void> {
+  async resetPassword(token: string, password: string): Promise<void> {
     const forgot = await this.forgotService.findOne({
-      hash,
+      token,
     });
 
     if (!forgot) {
@@ -164,16 +167,18 @@ export class AuthService {
         {
           status: HttpStatus.UNPROCESSABLE_ENTITY,
           errors: {
-            hash: `notFound`,
+            token: `notFound`,
           },
         },
         HttpStatus.UNPROCESSABLE_ENTITY
       );
     }
+    const salt = await bcrypt.genSalt();
+
     await this.dashboardUserService.update({
       where: { id: forgot.dashboardUserId },
       data: {
-        password,
+        password: await bcrypt.hash(password, salt),
       },
     });
     await this.forgotService.softDelete({
