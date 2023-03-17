@@ -34,7 +34,7 @@ export const CreateProject: FC = () => {
   const onSubmit = () => {
     const projectPayload = getProjectPayload();
     mutation.mutate(projectPayload, {
-      onSuccess: (data) => navigate("/projects"),
+      onSuccess: () => navigate("/projects"),
     });
   };
   return (

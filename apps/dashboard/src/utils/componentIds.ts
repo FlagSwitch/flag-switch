@@ -1,0 +1,26 @@
+/* NAVIGATION */
+export const NAVIGATE_TO_CREATE_FEATURE = "NAVIGATE_TO_CREATE_FEATURE";
+export const NAVIGATE_TO_CREATE_GROUP = "NAVIGATE_TO_CREATE_GROUP";
+export const NAVIGATE_TO_CREATE_SEGMENT = "NAVIGATE_TO_CREATE_SEGMENT";
+export const CREATE_API_TOKEN_BUTTON = "CREATE_API_TOKEN_BUTTON";
+
+/* CREATE FEATURE */
+export const CF_NAME_ID = "CF_NAME_ID";
+export const CF_TYPE_ID = "CF_TYPE_ID";
+export const CF_DESC_ID = "CF_DESC_ID";
+export const CF_CREATE_BTN_ID = "CF_CREATE_BTN_ID";
+
+/* CREATE GROUP */
+export const UG_NAME_ID = "UG_NAME_ID";
+export const UG_DESC_ID = "UG_DESC_ID";
+export const UG_USERS_ID = "UG_USERS_ID";
+export const UG_USERS_ADD_ID = "UG_USERS_ADD_ID";
+export const UG_CREATE_BTN_ID = "UG_CREATE_BTN_ID";
+export const UG_SAVE_BTN_ID = "UG_SAVE_BTN_ID";
+export const UG_EDIT_BTN_ID = "UG_EDIT_BTN_ID";
+export const UG_DELETE_BTN_ID = "UG_DELETE_BTN_ID";
+export const UG_EDIT_USERS_BTN_ID = "UG_EDIT_USERS_BTN_ID";
+export const UG_REMOVE_USER_BTN_ID = "UG_REMOVE_USER_BTN_ID";
+
+/* STRATEGY */
+export const SELECT_ITEM_ID = "SELECT_ITEM_ID";

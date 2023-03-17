@@ -272,7 +272,7 @@ export default createTheme({
     },
     MuiTabs: {
       styleOverrides: {
-        root: ({ theme }) => ({
+        root: () => ({
           "& .MuiTabs-indicator": {
             height: "4px",
           },
@@ -285,7 +285,7 @@ export default createTheme({
     },
     MuiLoadingButton: {
       styleOverrides: {
-        root: ({ theme }) => ({
+        root: () => ({
           "&.Mui-disabled": {
             backgroundColor: colors.purple[200],
           },

@@ -31,4 +31,4 @@ export const StyledButtonContainer = styled("div")(() => ({
   justifyContent: "flex-start",
 }));
 
-export const StyledButton = styled(Button)(({ theme }) => ({}));
+export const StyledButton = styled(Button)(() => ({}));

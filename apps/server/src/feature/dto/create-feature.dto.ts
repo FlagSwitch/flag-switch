@@ -1,12 +1,8 @@
 import { IsNotEmpty, IsEnum } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
-import { FeatureType } from "@prisma/client";
+import { FeatureTypeEnum } from "@prisma/client";
 
 export class CreateFeatureDto {
-  @ApiProperty()
-  @IsNotEmpty()
-  readonly featureId: string;
-
   @ApiProperty()
   @IsNotEmpty()
   readonly name: string;
@@ -19,6 +15,6 @@ export class CreateFeatureDto {
   @IsNotEmpty()
   readonly createdBy: string;
 
-  @IsEnum(FeatureType)
-  readonly type: FeatureType;
+  @IsEnum(FeatureTypeEnum)
+  readonly type: FeatureTypeEnum;
 }

@@ -10,7 +10,7 @@ import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("Feature")
 @Controller({
-  path: 'feature'
+  path: "feature",
 })
 export class FeatureController {
   constructor(private readonly featureService: FeatureService) {}
@@ -20,12 +20,15 @@ export class FeatureController {
   async createFeature(
     @Body() createFeatureDto: CreateFeatureDto
   ): Promise<FeatureModel> {
-    const { featureId, name, type, projectId, createdBy } = createFeatureDto;
+    const { name, type, projectId, createdBy } = createFeatureDto;
     return this.featureService.create({
-      id: featureId,
       name,
-      type,
       createdBy,
+      type: {
+        connect: {
+          name: type,
+        },
+      },
       project: {
         connect: {
           id: projectId,
@@ -35,13 +38,13 @@ export class FeatureController {
   }
 
   @ApiBearerAuth()
-  @Put("feature/:id")
+  @Put("feature/:projectId/:name")
   async updateFeature(
-    @Param("id") { id }: UpdateFeatureDtoParams,
+    @Param() { name, projectId }: UpdateFeatureDtoParams,
     @Body() updateFeatureDto: UpdateFeatureDto
   ): Promise<FeatureModel> {
     return this.featureService.update({
-      where: { id },
+      where: { projectId_name: { projectId, name } },
       data: updateFeatureDto,
     });
   }

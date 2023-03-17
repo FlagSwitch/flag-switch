@@ -7,7 +7,7 @@ import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("Env Feature")
 @Controller({
-  path: 'env-feature'
+  path: "env-feature",
 })
 export class EnvFeatureController {
   constructor(private readonly envFeatureService: EnvFeatureService) {}
@@ -17,14 +17,22 @@ export class EnvFeatureController {
   async createEnvFeature(
     @Body() createEnvFeatureDto: CreateEnvFeatureDto
   ): Promise<EnvFeatureModel> {
-    const { state, updatingUser, environmentId, featureToggleId } =
+    const { state, updatingUser, environmentId, featureName, projectId } =
       createEnvFeatureDto;
     return this.envFeatureService.create({
       state,
       updatingUser,
-      featureToggle: {
+      project: {
         connect: {
-          id: featureToggleId,
+          id: projectId,
+        },
+      },
+      feature: {
+        connect: {
+          projectId_name: {
+            name: featureName,
+            projectId,
+          },
         },
       },
       environment: {
@@ -40,10 +48,10 @@ export class EnvFeatureController {
   async updateEnvfeature(
     @Body() updateEnvFeatureDto: UpdateEnvFeatureDto
   ): Promise<EnvFeatureModel> {
-    const { state, environmentId, featureToggleId } = updateEnvFeatureDto;
+    const { state, environmentId, featureName } = updateEnvFeatureDto;
     return this.envFeatureService.update({
       where: {
-        featureToggleId_environmentId: { featureToggleId, environmentId },
+        featureName_environmentId: { featureName, environmentId },
       },
       data: {
         state,

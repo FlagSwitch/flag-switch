@@ -1,4 +1,12 @@
-import { Controller, Param, Post, Body, Put, Get } from "@nestjs/common";
+import {
+  Controller,
+  Param,
+  Post,
+  Body,
+  Put,
+  Get,
+  Request,
+} from "@nestjs/common";
 import { ProjectService } from "./project.service";
 import { Project as ProjectModel } from "@prisma/client";
 import { CreateProjectDto } from "./dto/create-project.dto";
@@ -23,9 +31,17 @@ export class ProjectController {
   @ApiBearerAuth()
   @Post()
   async createProject(
+    @Request() request,
     @Body() createProjectDto: CreateProjectDto
   ): Promise<ProjectModel> {
-    return this.projectService.create(createProjectDto);
+    return this.projectService.create({
+      ...createProjectDto,
+      dashboardUsers: {
+        connect: {
+          id: request.user.id,
+        },
+      },
+    });
   }
 
   @ApiBearerAuth()

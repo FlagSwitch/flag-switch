@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Projects } from "components/project/Projects/Projects";
 import { CreateProject } from "components/project/CreateProject/CreateProject";
 import { Features } from "components/feature/Features/Features";
+import { CreateFeature } from "components/feature/CreateFeature/CreateFeature";
 import { Users } from "components/user/Users/Users";
 import { UserGroups } from "components/userGroup/UserGroups/UserGroups";
 import { Overview } from "components/overview/Overview";
@@ -35,6 +36,10 @@ function App() {
                       path="/projects/create"
                     />
                     <Route element={<Features />} path="/features" />
+                    <Route
+                      element={<CreateFeature />}
+                      path="/features/create"
+                    />
                     <Route element={<UserGroups />} path="/user-groups" />
                     <Route element={<States />} path="/states" />
                     <Route element={<Users />} path="/users" />

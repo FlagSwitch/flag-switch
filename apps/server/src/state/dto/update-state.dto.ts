@@ -9,5 +9,10 @@ export class UpdateStateDto {
 
 export class UpdateStateDtoParams {
   @ApiProperty()
+  @IsNotEmpty()
   id: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  projectId: string;
 }
