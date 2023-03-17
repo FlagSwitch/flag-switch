@@ -1,8 +1,12 @@
-import { FC, useState } from "react";
+import { FC, useEffect } from "react";
 
 import { StyledLoginPage } from "./LoginPage.style";
 import { LoginForm } from "../LoginForm/LoginForm";
 import useLoginForm from "../hooks/UseLoginForm";
+import { useAuthApi } from "hooks/api/actions/useAuthApi/useAuthApi";
+import { useAuthUser } from "hooks/api/getters/useAuth/useAuthUser";
+import { useNavigate } from "react-router";
+import { useQueryClient } from "@tanstack/react-query";
 export const LoginPage: FC = () => {
   const {
     usernameOrEmail,
@@ -13,15 +17,29 @@ export const LoginPage: FC = () => {
     clearErrors,
     errors,
   } = useLoginForm();
-  const [isLoading, setIsLoading] = useState(false);
+  const { loading: loginLoading, login } = useAuthApi();
+  const { user, loading: userLoading } = useAuthUser();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    if (user?.id) {
+      navigate("/projects");
+    }
+  }, [user, navigate]);
+
   const onSignInClicked = () => {
-    setIsLoading(!isLoading);
+    const { usernameOrEmail, password } = getLoginPayload();
+    login({ email: usernameOrEmail, password }).then(({ token }) => {
+      localStorage.setItem("token", token);
+      queryClient.invalidateQueries(["authData"]);
+    });
   };
 
   return (
     <StyledLoginPage>
       <LoginForm
-        isLoading={isLoading}
+        isLoading={loginLoading || userLoading}
         errors={errors}
         handleSubmit={onSignInClicked}
         usernameOrEmail={usernameOrEmail}

@@ -4,7 +4,7 @@ import ProjectForm from "../ProjectForm/ProjectForm";
 import useProjectForm from "../hooks/UseProjectForm";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import { useAxios } from "contexts/AxiosContext";
 import { Prisma } from "prisma-client";
 
 export const CreateProject: FC = () => {
@@ -21,7 +21,7 @@ export const CreateProject: FC = () => {
     validateName,
     errors,
   } = useProjectForm();
-
+  const axios = useAxios();
   const navigate = useNavigate();
   const mutation = useMutation((newProject: Prisma.ProjectCreateInput) => {
     return axios.post("http://localhost:3000/api/project", newProject);

@@ -20,6 +20,8 @@ import { AuthModule } from "./auth/auth.module";
 import { MailerModule } from "@nestjs-modules/mailer";
 import { ForgotModule } from "./forgot/forgot.module";
 import { MailModule } from "./mail/mail.module";
+import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from './auth/guards/jwtAuthGuard';
 import path from "path";
 
 @Module({
@@ -62,6 +64,12 @@ import path from "path";
     ProjectModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    }
+  ],
 })
 export class AppModule {}

@@ -9,16 +9,21 @@ import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import ListItemIcon from "@mui/material/ListItemIcon";
-
+import queryClient from "queryClient";
 export const Account: FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
   const openAccountSettings = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    setAnchorEl(null);
+    localStorage.removeItem("token");
+    queryClient.setQueryData(["authData"], null);
   };
 
   return (
@@ -89,7 +94,7 @@ export const Account: FC = () => {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

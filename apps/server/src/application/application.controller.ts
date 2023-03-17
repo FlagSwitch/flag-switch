@@ -7,12 +7,18 @@ import {
   UpdateApplicationDtoParams,
 } from "./dto/update-application.dto";
 
-@Controller()
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
+
+@ApiTags("Application")
+@Controller({
+  path: 'application'
+})
 export class AccountController {
   constructor(private readonly applicationService: ApplicationService) {}
 
-  @Post("application")
-  async createAccount(
+  @ApiBearerAuth()
+  @Post()
+  async createApplication(
     @Body() createApplicationDto: CreateApplicationDto
   ): Promise<ApplicationModel> {
     const { name, applicationId } = createApplicationDto;
@@ -22,8 +28,9 @@ export class AccountController {
     });
   }
 
-  @Put("application/:id")
-  async updateAccount(
+  @ApiBearerAuth()
+  @Put(":id")
+  async updateApplication(
     @Param("id") { id }: UpdateApplicationDtoParams,
     @Body() updateApplicationDto: UpdateApplicationDto
   ): Promise<ApplicationModel> {

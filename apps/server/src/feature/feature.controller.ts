@@ -6,12 +6,18 @@ import {
   UpdateFeatureDto,
   UpdateFeatureDtoParams,
 } from "./dto/update-feature.dto";
-@Controller()
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
+
+@ApiTags("Feature")
+@Controller({
+  path: 'feature'
+})
 export class FeatureController {
   constructor(private readonly featureService: FeatureService) {}
 
-  @Post("feature")
-  async createAccount(
+  @ApiBearerAuth()
+  @Post()
+  async createFeature(
     @Body() createFeatureDto: CreateFeatureDto
   ): Promise<FeatureModel> {
     const { featureId, name, type, projectId, createdBy } = createFeatureDto;
@@ -28,6 +34,7 @@ export class FeatureController {
     });
   }
 
+  @ApiBearerAuth()
   @Put("feature/:id")
   async updateFeature(
     @Param("id") { id }: UpdateFeatureDtoParams,
