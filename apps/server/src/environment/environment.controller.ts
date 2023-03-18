@@ -1,16 +1,16 @@
 import { Controller, Param, Post, Body, Put } from "@nestjs/common";
 import { EnvironmentService } from "./environment.service";
 import { Environment as EnvironmentModel } from "@prisma/client";
-import { CreateEnvironmentDto } from "./dto/create-environment.dto";
 import {
+  CreateEnvironmentDto,
   UpdateEnvironmentDtoParams,
   UpdateEnvironmentDto,
-} from "./dto/update-environment.dto";
+} from "flag-switch-types";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("Environment")
 @Controller({
-  path: 'environment'
+  path: "environment",
 })
 export class EnvironmentController {
   constructor(private readonly environmentService: EnvironmentService) {}

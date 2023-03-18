@@ -142,11 +142,11 @@ export const Sidebar: FC = () => {
         </IconButton>
       </DrawerHeader>
       <Divider />
-      {routesToNavListItems(upperRoutes)}
+      {routesToNavListItems(upperRoutes())}
       <Divider />
-      {routesToNavListItems(middleRoutes)}
+      {routesToNavListItems(middleRoutes())}
       <Divider />
-      {routesToNavListItems(userRoutes)}
+      {routesToNavListItems(userRoutes())}
     </Drawer>
   );
 };

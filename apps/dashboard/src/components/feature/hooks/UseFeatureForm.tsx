@@ -1,14 +1,24 @@
+import { useRequiredPathParam } from "hooks/useRequiredPathParam";
+import { FeatureTypeEnum } from "prisma-client";
 import { useEffect, useState } from "react";
 
 const useFeatureForm = (
   initialFeatureName = "",
+  initialProject = "Default",
   initialFeatureType = "Release",
   initialFeatureDesc = ""
 ) => {
+  const projectId = useRequiredPathParam("projectId");
   const [featureName, setFeatureName] = useState(initialFeatureName);
   const [featureType, setFeatureType] = useState(initialFeatureType);
   const [featureDesc, setFeatureDesc] = useState(initialFeatureDesc);
+  const [project, setProject] = useState(projectId || initialProject);
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    if (!projectId) setProject(initialProject);
+    else setProject(projectId);
+  }, [initialProject, projectId]);
 
   useEffect(() => {
     setFeatureName(initialFeatureName);
@@ -25,8 +35,9 @@ const useFeatureForm = (
   const getFeaturePayload = () => {
     return {
       name: featureName,
-      type: featureType,
+      type: featureType as FeatureTypeEnum,
       description: featureDesc,
+      projectId,
     };
   };
 
@@ -44,9 +55,11 @@ const useFeatureForm = (
   };
 
   return {
+    project,
     featureType,
     featureName,
     featureDesc,
+    setProject,
     setFeatureType,
     setFeatureName,
     setFeatureDesc,

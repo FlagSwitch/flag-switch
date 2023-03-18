@@ -1,8 +1,7 @@
 import { Controller, Post, Body, Put } from "@nestjs/common";
 import { EnvFeatureService } from "./envFeature.service";
 import { EnvFeature as EnvFeatureModel } from "@prisma/client";
-import { CreateEnvFeatureDto } from "./dto/create-env-feature.dto";
-import { UpdateEnvFeatureDto } from "./dto/update-env-feature.dto";
+import { CreateEnvFeatureDto, UpdateEnvFeatureDto } from "flag-switch-types";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("Env Feature")

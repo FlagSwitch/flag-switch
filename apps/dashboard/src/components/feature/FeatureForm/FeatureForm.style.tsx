@@ -39,3 +39,4 @@ export const styledSelectInput = (theme: Theme) => ({
     minWidth: "379px",
   },
 });
+

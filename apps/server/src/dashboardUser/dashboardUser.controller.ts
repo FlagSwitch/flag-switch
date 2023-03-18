@@ -4,12 +4,12 @@ import { DashboardUser as DashboardUserModel } from "@prisma/client";
 import {
   UpdateDashboardUserDto,
   UpdateDashboardUserDtoParams,
-} from "./dto/update-dashboard-user.dto";
+} from "flag-switch-types";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("Dashboard User")
 @Controller({
-  path: 'dashboard-user'
+  path: "dashboard-user",
 })
 export class DashboardUserController {
   constructor(private readonly dashboardUserService: DashboardUserService) {}

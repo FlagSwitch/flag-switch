@@ -18,7 +18,7 @@ export const Features: FC = () => {
               variant="contained"
               startIcon={<AddIcon />}
               component={Link}
-              to={"/features/create"}
+              to={"/projects/default/feature-create"}
             >
               Add Feature
             </Button>

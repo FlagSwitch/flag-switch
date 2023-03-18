@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { AxiosError, AxiosResponse } from "axios";
 import { DashboardUser } from "prisma-client";
 import { useAxios } from "contexts/AxiosContext";
@@ -14,6 +14,7 @@ export interface IUseAuthEndpointOutput {
 
 export const useAuthEndpoint = (): IUseAuthEndpointOutput => {
   const axios = useAxios();
+  const queryClient = useQueryClient();
   const getUser = async () => {
     return axios
       .get("http://localhost:3000/api/auth/me")
@@ -28,10 +29,14 @@ export const useAuthEndpoint = (): IUseAuthEndpointOutput => {
   >({
     queryKey: ["authData"],
     queryFn: getUser,
-    staleTime: Infinity,
     retry: false,
+    refetchInterval: 15000,
     retryOnMount: false,
     refetchOnWindowFocus: false,
+    keepPreviousData: false,
+    onError: () => {
+      queryClient.setQueryData(["authData"], null);
+    }
   });
 
   return {

@@ -6,10 +6,10 @@ import { AnnouncerProvider } from "./components/common/Announcer/AnnouncerProvid
 import UIProvider from "./providers/UIProvider/UIProvider";
 import { SidePanelProvider } from "./contexts/SidePanelContext";
 import AxiosProvider from "./contexts/AxiosContext";
-import "./index.css";
-
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClientProvider } from "@tanstack/react-query";
 import queryClient from "./queryClient";
+import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -20,6 +20,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
             <AnnouncerProvider>
               <SidePanelProvider>
                 <App />
+                <ReactQueryDevtools />
               </SidePanelProvider>
             </AnnouncerProvider>
           </ThemeProvider>

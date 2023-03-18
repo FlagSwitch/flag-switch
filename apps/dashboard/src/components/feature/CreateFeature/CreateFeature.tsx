@@ -5,12 +5,16 @@ import { useMutation } from "@tanstack/react-query";
 import FeatureForm from "../FeatureForm/FeatureForm";
 import UseFeatureForm from "../hooks/UseFeatureForm";
 import { useAxios } from "contexts/AxiosContext";
-import { FeatureTypeEnum, Prisma } from "prisma-client";
+import { ICreateFeatureDto } from "flag-switch-types";
+import { FeatureTypeEnum } from "prisma-client";
+import { useAuthUser } from "hooks/api/getters/useAuth/useAuthUser";
 
 export const CreateFeature: FC = () => {
   const axios = useAxios();
+  const { user } = useAuthUser();
   const navigate = useNavigate();
   const {
+    project,
     featureType,
     featureName,
     featureDesc,
@@ -19,17 +23,24 @@ export const CreateFeature: FC = () => {
     setFeatureName,
     getFeaturePayload,
     clearErrors,
+    setProject,
     errors,
   } = UseFeatureForm();
-  const mutation = useMutation((newFeature: Prisma.FeatureCreateInput) => {
+  const mutation = useMutation((newFeature: ICreateFeatureDto) => {
     return axios.post("http://localhost:3000/api/feature", newFeature);
   });
 
   const onSubmit = () => {
     const featurePayload = getFeaturePayload();
-    // mutation.mutate(featurePayload, {
-    //   onSuccess: () => navigate("/features"),
-    // });
+    mutation.mutate(
+      {
+        ...featurePayload,
+        createdBy: user?.email || "",
+      },
+      {
+        onSuccess: () => navigate("/features"),
+      }
+    );
   };
 
   const onCancel = () => {
@@ -50,6 +61,8 @@ export const CreateFeature: FC = () => {
         setFeatureDesc={setFeatureDesc}
         mode="Create"
         clearErrors={clearErrors}
+        projectId={project}
+        setProjectId={setProject}
       />
     </FormPage>
   );
