@@ -10,5 +10,9 @@ export class UpdateFeatureDto {
 export class UpdateFeatureDtoParams {
   @ApiProperty()
   @IsNotEmpty()
-  id: string;
+  name: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  projectId: string;
 }

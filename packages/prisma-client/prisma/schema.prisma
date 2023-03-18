@@ -17,12 +17,20 @@ model Forgot {
   deletedAt DateTime?
 }
 
-enum FeatureType {
+enum FeatureTypeEnum {
   Release
   GradualRollout
   Permission
   Experimental
   Operational
+}
+
+model FeatureType {
+  name FeatureTypeEnum @id
+  description String?
+  features Feature[]
+  createdAt DateTime @default(now())
+  deletedAt DateTime?
 }
 
 enum RoleEnum {
@@ -39,6 +47,7 @@ model Application {
   id String @id
   name String
   createdAt DateTime @default(now())
+  deletedAt DateTime?
 }
 
 model DashboardUser {
@@ -62,6 +71,7 @@ model User {
   name String
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
+  deletedAt DateTime?
 }
 
 model Environment {
@@ -69,6 +79,7 @@ model Environment {
   name String
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
+  deletedAt DateTime?
   projects Project[]
   envFeatureToggles EnvFeature[]
 }
@@ -83,7 +94,9 @@ model Project {
   dashboardUsers DashboardUser[]
   environments Environment[]
   features Feature[]
+  envFeatures EnvFeature[]
   states State[]
+  featuresOnStates FeaturesOnStates[]
 }
 
 model EnvFeature {
@@ -91,35 +104,55 @@ model EnvFeature {
   updatingUser String
   queriedAt DateTime?
   updatedAt DateTime @updatedAt @default(now())
+  deletedAt DateTime?
   createdAt DateTime @default(now())
   environment Environment @relation(fields: [environmentId], references: [id])
   environmentId String
-  featureToggle Feature @relation(fields: [featureToggleId], references: [id])
-  featureToggleId String
+  project Project @relation(fields: [projectId], references: [id])
+  projectId String
+  feature Feature @relation(fields: [featureName, projectId], references: [name, projectId])
+  featureName String
   version Int @default(0)
 
-  @@id([featureToggleId, environmentId])
+  @@id([featureName, environmentId])
 }
 
 model Feature {
-  id String @id
   name String
-  type FeatureType
+  type FeatureType @relation(fields: [typeName], references: [name])
+  typeName FeatureTypeEnum
   createdBy String
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
+  deletedAt DateTime?
   project Project @relation(fields: [projectId], references: [id])
   projectId String
-  states State[]
+  states FeaturesOnStates[]
   envFeatureToggles EnvFeature[]
+
+  @@id([projectId, name])
 }
 
 model State {
-  id String @id
+  id String
   name String
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
+  deletedAt DateTime?
   project Project @relation(fields: [projectId], references: [id])
   projectId String
-  features Feature[]
+  features FeaturesOnStates[]
+
+  @@id([id, projectId])
+}
+
+model FeaturesOnStates {
+  feature    Feature     @relation(fields: [featureName, projectId], references: [name, projectId])
+  featureName  String 
+  state   State @relation(fields: [stateId, projectId], references: [id, projectId])
+  stateId String 
+  project Project @relation(fields: [projectId], references: [id])
+  projectId String
+
+  @@id([stateId, projectId, featureName])
 }

@@ -9,7 +9,7 @@ export class UpdateEnvFeatureDto {
 
   @ApiProperty()
   @IsNotEmpty()
-  readonly featureToggleId: string;
+  readonly featureName: string;
 
   @ApiProperty()
   @IsNotEmpty()

@@ -19,9 +19,10 @@ import { I18nModule, HeaderResolver } from "nestjs-i18n";
 import { AuthModule } from "./auth/auth.module";
 import { MailerModule } from "@nestjs-modules/mailer";
 import { ForgotModule } from "./forgot/forgot.module";
+import { FeatureTypeModule } from "./featureType/featureType.module";
 import { MailModule } from "./mail/mail.module";
-import { APP_GUARD } from '@nestjs/core';
-import { JwtAuthGuard } from './auth/guards/jwtAuthGuard';
+import { APP_GUARD } from "@nestjs/core";
+import { JwtAuthGuard } from "./auth/guards/jwtAuthGuard";
 import path from "path";
 
 @Module({
@@ -62,6 +63,7 @@ import path from "path";
     FeatureModule,
     EnvFeatureModule,
     ProjectModule,
+    FeatureTypeModule,
   ],
   controllers: [AppController],
   providers: [
@@ -69,7 +71,7 @@ import path from "path";
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
-    }
+    },
   ],
 })
 export class AppModule {}

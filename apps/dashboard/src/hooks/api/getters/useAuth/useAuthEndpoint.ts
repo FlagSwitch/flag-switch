@@ -6,7 +6,6 @@ export type IAuthEndpointUserResponse = DashboardUser;
 
 export interface IUseAuthEndpointOutput {
   data?: IAuthEndpointUserResponse;
-  refetch: any;
   loading: boolean;
   error?: Error | null;
   isFetched: boolean;
@@ -23,7 +22,7 @@ export const useAuthEndpoint = (): IUseAuthEndpointOutput => {
       );
   };
 
-  const { isLoading, error, data, refetch, isFetched, isSuccess } = useQuery<
+  const { isLoading, error, data, isFetched, isSuccess } = useQuery<
     IAuthEndpointUserResponse,
     AxiosError
   >({
@@ -37,7 +36,6 @@ export const useAuthEndpoint = (): IUseAuthEndpointOutput => {
 
   return {
     data,
-    refetch,
     loading: isLoading,
     error,
     isFetched,

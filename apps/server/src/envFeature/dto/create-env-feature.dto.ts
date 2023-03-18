@@ -8,7 +8,11 @@ export class CreateEnvFeatureDto {
 
   @ApiProperty()
   @IsNotEmpty()
-  readonly featureToggleId: string;
+  readonly featureName: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  readonly projectId: string;
 
   @ApiProperty()
   @IsNotEmpty()

@@ -31,9 +31,7 @@ export class EnvFeatureService {
     });
   }
 
-  async create(
-    data: Prisma.EnvFeatureCreateInput
-  ): Promise<EnvFeature> {
+  async create(data: Prisma.EnvFeatureCreateInput): Promise<EnvFeature> {
     return this.prisma.envFeature.create({
       data,
     });

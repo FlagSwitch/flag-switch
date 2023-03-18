@@ -48,7 +48,7 @@ export class StateService {
     });
   }
 
-  async softDelete(where: Prisma.ProjectWhereUniqueInput): Promise<State> {
+  async softDelete(where: Prisma.StateWhereUniqueInput): Promise<State> {
     return this.prisma.state.delete({
       where,
     });

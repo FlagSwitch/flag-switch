@@ -7,7 +7,7 @@ import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("State")
 @Controller({
-  path: 'state'
+  path: "state",
 })
 export class StateController {
   constructor(private readonly stateService: StateService) {}
@@ -30,13 +30,18 @@ export class StateController {
   }
 
   @ApiBearerAuth()
-  @Put(":id")
+  @Put(":projectId/:id")
   async updateState(
-    @Param("id") { id }: UpdateStateDtoParams,
+    @Param() { id, projectId }: UpdateStateDtoParams,
     @Body() updateStateDto: UpdateStateDto
   ): Promise<StateModel> {
     return this.stateService.update({
-      where: { id },
+      where: {
+        id_projectId: {
+          id,
+          projectId,
+        },
+      },
       data: updateStateDto,
     });
   }
