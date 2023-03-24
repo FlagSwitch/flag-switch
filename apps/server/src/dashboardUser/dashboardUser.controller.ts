@@ -4,7 +4,7 @@ import { DashboardUser as DashboardUserModel } from "@prisma/client";
 import {
   UpdateDashboardUserDto,
   UpdateDashboardUserDtoParams,
-} from "flag-switch-types";
+} from "dto-types";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("Dashboard User")

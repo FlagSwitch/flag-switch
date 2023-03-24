@@ -1,11 +1,7 @@
 import { Controller, Param, Post, Body, Put } from "@nestjs/common";
 import { UserService } from "./user.service";
 import { User as UserModel } from "@prisma/client";
-import {
-  CreateUserDto,
-  UpdateUserDto,
-  UpdateUserDtoParams,
-} from "flag-switch-types";
+import { CreateUserDto, UpdateUserDto, UpdateUserDtoParams } from "dto-types";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("User")

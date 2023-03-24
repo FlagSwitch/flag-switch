@@ -14,7 +14,7 @@ import {
   CreateProjectDto,
   UpdateProjectDto,
   UpdateProjectDtoParams,
-} from "flag-switch-types";
+} from "dto-types";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("Project")

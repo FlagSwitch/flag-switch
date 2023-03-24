@@ -5,7 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import FeatureForm from "../FeatureForm/FeatureForm";
 import UseFeatureForm from "../hooks/UseFeatureForm";
 import { useAxios } from "contexts/AxiosContext";
-import { ICreateFeatureDto } from "flag-switch-types";
+import { ICreateFeatureDto } from "dto-types";
 import { FeatureTypeEnum } from "prisma-client";
 import { useAuthUser } from "hooks/api/getters/useAuth/useAuthUser";
 

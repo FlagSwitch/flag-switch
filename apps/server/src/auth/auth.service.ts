@@ -7,7 +7,7 @@ import {
   AuthRegisterLoginDto,
   AuthEmailLoginDto,
   AuthUpdateDto,
-} from "flag-switch-types";
+} from "dto-types";
 import { DashboardUserService } from "src/dashboardUser/dashboardUser.service";
 import { ForgotService } from "src/forgot/forgot.service";
 import { MailService } from "src/mail/mail.service";

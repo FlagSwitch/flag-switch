@@ -8,7 +8,6 @@ import {
 import { ValidationPipe } from "@nestjs/common";
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
 import { PrismaService } from "./prisma/prisma.service";
-import { serverGlobalPrefix } from "flag-switch-types";
 
 const CORS_OPTIONS = {
   origin: "*", // or '*' or whatever is required
@@ -39,7 +38,7 @@ async function bootstrap() {
     .setVersion("1.0")
     .build();
 
-  app.setGlobalPrefix(serverGlobalPrefix);
+  app.setGlobalPrefix("api");
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup("api-docs", app, document);
 
