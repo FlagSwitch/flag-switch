@@ -766,9 +766,7 @@
   integrity sha512-Xs/4RZltsAL7pkvaNStUQt7netTkyxrS0K+RILcVr3TRMS/ToOg4I6uNfhB9SlGsnWBym4U+EaXq0f0cEMNkHA==
 
 "@nestjs/cli@^9.0.0":
-  version "9.2.0"
-  resolved "https://registry.npmjs.org/@nestjs/cli/-/cli-9.2.0.tgz#d174f54d7aaa6695b8e413093e3d18367bc8bec7"
-  integrity sha512-6B1IjDcJbrOu55oMF67L1x5lDUOZ3Zs9l7bKCBH9D78965m8wq/2rlEWl/gJto5TABLQWy3hVvV/s8VzUlRMxw==
+  version "9.3.0"
   dependencies:
     "@angular-devkit/core" "15.1.4"
     "@angular-devkit/schematics" "15.1.4"
