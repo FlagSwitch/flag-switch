@@ -1,11 +1,11 @@
 import { Controller, Param, Post, Body, Put } from "@nestjs/common";
 import { FeatureService } from "./feature.service";
 import { Feature as FeatureModel } from "@prisma/client";
-import { CreateFeatureDto } from "./dto/create-feature.dto";
 import {
+  CreateFeatureDto,
   UpdateFeatureDto,
   UpdateFeatureDtoParams,
-} from "./dto/update-feature.dto";
+} from "flag-switch-types";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("Feature")

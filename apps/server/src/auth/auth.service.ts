@@ -1,11 +1,13 @@
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import * as bcrypt from "bcryptjs";
-import { AuthEmailLoginDto } from "./dto/auth-email-login.dto";
-import { AuthUpdateDto } from "./dto/auth-update.dto";
 import { randomStringGenerator } from "@nestjs/common/utils/random-string-generator.util";
 import * as crypto from "crypto";
-import { AuthRegisterLoginDto } from "./dto/auth-register-login.dto";
+import {
+  AuthRegisterLoginDto,
+  AuthEmailLoginDto,
+  AuthUpdateDto,
+} from "flag-switch-types";
 import { DashboardUserService } from "src/dashboardUser/dashboardUser.service";
 import { ForgotService } from "src/forgot/forgot.service";
 import { MailService } from "src/mail/mail.service";

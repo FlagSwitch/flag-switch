@@ -86,7 +86,9 @@ const ProjectForm: React.FC<IProjectForm> = ({
 
       <StyledButtonContainer>
         {children}
-        <StyledButton onClick={handleSubmit}>Submit</StyledButton>
+        <StyledButton variant="contained" onClick={handleSubmit}>
+          Submit
+        </StyledButton>
         <StyledButton onClick={handleCancel}>Cancel</StyledButton>
       </StyledButtonContainer>
     </StyledForm>

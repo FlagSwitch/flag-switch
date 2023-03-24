@@ -9,11 +9,12 @@ import {
 } from "@nestjs/common";
 import { ProjectService } from "./project.service";
 import { Project as ProjectModel } from "@prisma/client";
-import { CreateProjectDto } from "./dto/create-project.dto";
+
 import {
+  CreateProjectDto,
   UpdateProjectDto,
   UpdateProjectDtoParams,
-} from "./dto/update-project.dto";
+} from "flag-switch-types";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("Project")

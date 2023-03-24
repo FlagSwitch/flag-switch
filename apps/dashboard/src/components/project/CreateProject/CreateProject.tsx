@@ -18,7 +18,6 @@ export const CreateProject: FC = () => {
     getProjectPayload,
     clearErrors,
     validateProjectId,
-    validateName,
     errors,
   } = useProjectForm();
   const axios = useAxios();

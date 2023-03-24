@@ -14,14 +14,16 @@ import PrivateRoutes from "components/router/PrivateRoutes";
 import { useAuthUser } from "hooks/api/getters/useAuth/useAuthUser";
 import { ConditionallyRender } from "components/common/ConditionallyRender/ConditionallyRender";
 import { Loader } from "components/common/Loader/Loader";
+import { useI18nSetup } from "i18n/useI18nSetup";
 function App() {
   const { isFetched } = useAuthUser();
+  const isI18nReady = useI18nSetup();
   const hasFetchedAuth = isFetched;
   return (
     <div className="App">
       <Suspense fallback={<Loader />}>
         <ConditionallyRender
-          condition={!hasFetchedAuth}
+          condition={!hasFetchedAuth || !isI18nReady}
           show={<Loader />}
           elseShow={
             <Router>
@@ -35,11 +37,12 @@ function App() {
                       element={<CreateProject />}
                       path="/projects/create"
                     />
-                    <Route element={<Features />} path="/features" />
                     <Route
                       element={<CreateFeature />}
-                      path="/features/create"
+                      path="/projects/:projectId/feature-create"
                     />
+                    <Route element={<Features />} path="/features" />
+
                     <Route element={<UserGroups />} path="/user-groups" />
                     <Route element={<States />} path="/states" />
                     <Route element={<Users />} path="/users" />

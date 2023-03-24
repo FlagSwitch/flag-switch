@@ -1,8 +1,11 @@
 import { Controller, Param, Post, Body, Put } from "@nestjs/common";
 import { StateService } from "./state.service";
 import { State as StateModel } from "@prisma/client";
-import { CreateStateDto } from "./dto/create-state.dto";
-import { UpdateStateDto, UpdateStateDtoParams } from "./dto/update-state.dto";
+import {
+  CreateStateDto,
+  UpdateStateDto,
+  UpdateStateDtoParams,
+} from "flag-switch-types";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("State")

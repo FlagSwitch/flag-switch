@@ -9,19 +9,22 @@ import {
   StyledInput,
   StyledTextField,
 } from "./FeatureForm.style";
-
+import { useNavigate } from "react-router-dom";
 import FeatureTypeSelect from "../common/FeatureTypeSelect/FeatureTypeSelect";
+import FeatureProjectSelect from "../common/FeatureProjectSelect/FeatureProjectSelect";
 import { FeatureTypeEnum } from "prisma-client";
 import { KeyboardArrowDownOutlined } from "@mui/icons-material";
 import { CF_TYPE_ID } from "utils/componentIds";
 
 interface IFeatureForm {
+  projectId: string;
   featureName: string;
   featureType: FeatureTypeEnum;
-  setFeatureType: React.Dispatch<React.SetStateAction<FeatureTypeEnum>>;
+  setFeatureType: React.Dispatch<React.SetStateAction<string>>;
   featureDesc: string;
   setFeatureName: React.Dispatch<React.SetStateAction<string>>;
   setFeatureDesc: React.Dispatch<React.SetStateAction<string>>;
+  setProjectId: React.Dispatch<React.SetStateAction<string>>;
   handleSubmit: (e: any) => void;
   handleCancel: () => void;
   errors: { [key: string]: string };
@@ -34,6 +37,8 @@ const FeatureForm: React.FC<IFeatureForm> = ({
   children,
   handleSubmit,
   handleCancel,
+  projectId,
+  setProjectId,
   featureName,
   featureType,
   setFeatureType,
@@ -41,9 +46,9 @@ const FeatureForm: React.FC<IFeatureForm> = ({
   setFeatureName,
   setFeatureDesc,
   errors,
-  mode,
   clearErrors,
 }) => {
+  const navigate = useNavigate();
   return (
     <StyledForm onSubmit={handleSubmit}>
       <StyledContainer>
@@ -74,6 +79,23 @@ const FeatureForm: React.FC<IFeatureForm> = ({
           IconComponent={KeyboardArrowDownOutlined}
         />
 
+        <StyledDescription>
+          In which project do you want to save the toggle?
+        </StyledDescription>
+        <FeatureProjectSelect
+          enabled
+          value={projectId}
+          filter={() => true}
+          onChange={(project) => {
+            debugger;
+            setProjectId(project);
+            navigate(`/projects/${project}/feature-create`, {
+              replace: true,
+            });
+          }}
+          sx={styledSelectInput}
+        />
+
         <StyledDescription>Describe what your feature does?</StyledDescription>
         <StyledTextField
           label="Feature description"
@@ -87,7 +109,9 @@ const FeatureForm: React.FC<IFeatureForm> = ({
 
       <StyledButtonContainer>
         {children}
-        <StyledButton onClick={handleSubmit}>Submit</StyledButton>
+        <StyledButton variant="contained" onClick={handleSubmit}>
+          Submit
+        </StyledButton>
         <StyledButton onClick={handleCancel}>Cancel</StyledButton>
       </StyledButtonContainer>
     </StyledForm>

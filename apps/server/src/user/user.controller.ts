@@ -1,13 +1,16 @@
 import { Controller, Param, Post, Body, Put } from "@nestjs/common";
 import { UserService } from "./user.service";
 import { User as UserModel } from "@prisma/client";
-import { CreateUserDto } from "./dto/create-user.dto";
-import { UpdateUserDto, UpdateUserDtoParams } from "./dto/update-user.dto";
+import {
+  CreateUserDto,
+  UpdateUserDto,
+  UpdateUserDtoParams,
+} from "flag-switch-types";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("User")
 @Controller({
-  path: 'user'
+  path: "user",
 })
 export class UserController {
   constructor(private readonly userService: UserService) {}

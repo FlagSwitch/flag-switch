@@ -1,17 +1,17 @@
 import { Controller, Param, Post, Body, Put } from "@nestjs/common";
 import { ApplicationService } from "./application.service";
 import { Application as ApplicationModel } from "@prisma/client";
-import { CreateApplicationDto } from "./dto/create-application.dto";
 import {
+  CreateApplicationDto,
   UpdateApplicationDto,
   UpdateApplicationDtoParams,
-} from "./dto/update-application.dto";
+} from "flag-switch-types";
 
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("Application")
 @Controller({
-  path: 'application'
+  path: "application",
 })
 export class AccountController {
   constructor(private readonly applicationService: ApplicationService) {}

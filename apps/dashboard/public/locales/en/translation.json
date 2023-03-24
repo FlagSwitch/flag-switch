@@ -1,0 +1,12 @@
+{
+    "sidePanel": {
+        "navigationHeaders": {
+            "overview": "Overview",
+            "projects": "Projects",
+            "states": "States",
+            "features": "Features",
+            "users": "Users",
+            "userGroups": "User Groups"
+        }
+    }
+}
