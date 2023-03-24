@@ -5,7 +5,7 @@ import {
   CreateApplicationDto,
   UpdateApplicationDto,
   UpdateApplicationDtoParams,
-} from "flag-switch-types";
+} from "dto-types";
 
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 

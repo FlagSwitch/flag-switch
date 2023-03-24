@@ -19,7 +19,7 @@ import {
   AuthConfirmEmailDto,
   AuthForgotPasswordDto,
   AuthEmailLoginDto,
-} from "flag-switch-types";
+} from "dto-types";
 import { Public } from "src/auth/decorators/public";
 
 @ApiTags("Auth")

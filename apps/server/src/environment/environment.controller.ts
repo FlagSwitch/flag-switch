@@ -5,7 +5,7 @@ import {
   CreateEnvironmentDto,
   UpdateEnvironmentDtoParams,
   UpdateEnvironmentDto,
-} from "flag-switch-types";
+} from "dto-types";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("Environment")

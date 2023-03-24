@@ -5,7 +5,7 @@ import {
   CreateFeatureDto,
   UpdateFeatureDto,
   UpdateFeatureDtoParams,
-} from "flag-switch-types";
+} from "dto-types";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("Feature")
