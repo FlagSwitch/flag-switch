@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { AxiosError, AxiosResponse } from "axios";
 import { FeatureType } from "prisma-client";
 import { useAxios } from "contexts/AxiosContext";
-
+import { featureTypeRoutes } from "router-constants";
 export interface IUseFeatureTypesOutput {
   data?: FeatureType[];
   loading: boolean;
@@ -15,7 +15,7 @@ export const useFeatureTypes = (): IUseFeatureTypesOutput => {
   const axios = useAxios();
   const getFeatureTypes = async () => {
     return axios
-      .get("http://localhost:3000/api/feature-type")
+      .get(`http://localhost:3000/${featureTypeRoutes.featureTypeBase}`)
       .then((res: AxiosResponse<FeatureType[], AxiosError>) => res.data);
   };
 

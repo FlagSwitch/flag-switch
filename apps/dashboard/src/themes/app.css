@@ -1,0 +1,9 @@
+button {
+    font-family: 'Sen', sans-serif;
+    font-variant-ligatures: none;
+}
+.MuiButton-root {
+    border-radius: 3px;
+    text-transform: none;
+    font-size: 16px;
+}

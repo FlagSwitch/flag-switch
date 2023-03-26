@@ -20,9 +20,8 @@ export class EnvironmentController {
   async createEnvironment(
     @Body() createEnvironmentDto: CreateEnvironmentDto
   ): Promise<EnvironmentModel> {
-    const { name, environmentId } = createEnvironmentDto;
+    const { name } = createEnvironmentDto;
     return this.environmentService.create({
-      id: environmentId,
       name,
     });
   }

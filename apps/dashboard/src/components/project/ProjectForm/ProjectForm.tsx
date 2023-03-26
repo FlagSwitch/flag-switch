@@ -9,6 +9,7 @@ import {
   StyledButton,
 } from "./ProjectForm.style";
 import { trim } from "utils/utils";
+import { useTranslation } from "react-i18next";
 
 interface IProjectForm {
   projectId: string;
@@ -41,10 +42,13 @@ const ProjectForm: React.FC<IProjectForm> = ({
   validateProjectId,
   clearErrors,
 }) => {
+  const { t } = useTranslation(undefined, {
+    keyPrefix: "projects.projectForm",
+  });
   return (
     <StyledForm onSubmit={handleSubmit}>
       <StyledContainer>
-        <StyledDescription>What is your project Id?</StyledDescription>
+        <StyledDescription>{t("projectIdSelect")}</StyledDescription>
         <StyledInput
           label="Project Id"
           value={projectId}
@@ -60,7 +64,7 @@ const ProjectForm: React.FC<IProjectForm> = ({
           required
         />
 
-        <StyledDescription>What is your project name?</StyledDescription>
+        <StyledDescription>{t("projectNameSelect")}</StyledDescription>
         <StyledInput
           label="Project name"
           value={projectName}
@@ -73,7 +77,7 @@ const ProjectForm: React.FC<IProjectForm> = ({
           required
         />
 
-        <StyledDescription>What is your project description?</StyledDescription>
+        <StyledDescription>{t("projectDescSelect")}</StyledDescription>
         <StyledTextField
           label="Project description"
           variant="outlined"
@@ -87,9 +91,11 @@ const ProjectForm: React.FC<IProjectForm> = ({
       <StyledButtonContainer>
         {children}
         <StyledButton variant="contained" onClick={handleSubmit}>
-          Submit
+          {t("buttons.submit")}
         </StyledButton>
-        <StyledButton onClick={handleCancel}>Cancel</StyledButton>
+        <StyledButton onClick={handleCancel}>
+          {t("buttons.cancel")}
+        </StyledButton>
       </StyledButtonContainer>
     </StyledForm>
   );

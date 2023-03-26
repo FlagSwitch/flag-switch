@@ -23,7 +23,7 @@ export interface ISelectOption {
 export interface IGeneralSelectProps extends Omit<SelectProps, "onChange"> {
   name?: string;
   value?: string;
-  label?: string;
+  label?: string | null;
   options: ISelectOption[];
   onChange: (key: string) => void;
   disabled?: boolean;

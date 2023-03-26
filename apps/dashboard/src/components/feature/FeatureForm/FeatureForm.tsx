@@ -15,6 +15,8 @@ import FeatureProjectSelect from "../common/FeatureProjectSelect/FeatureProjectS
 import { FeatureTypeEnum } from "prisma-client";
 import { KeyboardArrowDownOutlined } from "@mui/icons-material";
 import { CF_TYPE_ID } from "utils/componentIds";
+import { projectFeatureCreate } from "constants/routes/projectRoutes";
+import { useTranslation } from "react-i18next";
 
 interface IFeatureForm {
   projectId: string;
@@ -49,12 +51,15 @@ const FeatureForm: React.FC<IFeatureForm> = ({
   clearErrors,
 }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation(undefined, {
+    keyPrefix: "features.featureForm",
+  });
   return (
     <StyledForm onSubmit={handleSubmit}>
       <StyledContainer>
-        <StyledDescription>What is your feature name?</StyledDescription>
+        <StyledDescription>{t("featureNameSelect")}</StyledDescription>
         <StyledInput
-          label="Feature name"
+          label={t("placeholders.featureName")}
           value={featureName}
           onChange={(
             e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
@@ -65,40 +70,35 @@ const FeatureForm: React.FC<IFeatureForm> = ({
           required
         />
 
-        <StyledDescription>
-          What kind of feature toggle do you want?
-        </StyledDescription>
+        <StyledDescription>{t("featureTypeSelect")}</StyledDescription>
         <FeatureTypeSelect
           sx={styledSelectInput}
           value={featureType}
           onChange={setFeatureType as (key: string) => void}
-          label={"Toggle type"}
+          label={t("placeholders.featureType")}
           id="feature-type-select"
           editable
           data-testid={CF_TYPE_ID}
           IconComponent={KeyboardArrowDownOutlined}
         />
 
-        <StyledDescription>
-          In which project do you want to save the toggle?
-        </StyledDescription>
+        <StyledDescription>{t("featureProjectSelect")}</StyledDescription>
         <FeatureProjectSelect
           enabled
           value={projectId}
           filter={() => true}
           onChange={(project) => {
-            debugger;
             setProjectId(project);
-            navigate(`/projects/${project}/feature-create`, {
+            navigate(projectFeatureCreate(project), {
               replace: true,
             });
           }}
           sx={styledSelectInput}
         />
 
-        <StyledDescription>Describe what your feature does?</StyledDescription>
+        <StyledDescription>{t("featureDescSelect")}</StyledDescription>
         <StyledTextField
-          label="Feature description"
+          label={t("placeholders.featureDesc")}
           variant="outlined"
           multiline
           maxRows={4}
@@ -110,9 +110,11 @@ const FeatureForm: React.FC<IFeatureForm> = ({
       <StyledButtonContainer>
         {children}
         <StyledButton variant="contained" onClick={handleSubmit}>
-          Submit
+          {t("buttons.submit")}
         </StyledButton>
-        <StyledButton onClick={handleCancel}>Cancel</StyledButton>
+        <StyledButton onClick={handleCancel}>
+          {t("buttons.cancel")}
+        </StyledButton>
       </StyledButtonContainer>
     </StyledForm>
   );

@@ -22,7 +22,7 @@ export class EnvironmentService {
     orderBy?: Prisma.EnvironmentOrderByWithRelationAndSearchRelevanceInput;
   }): Promise<Environment[]> {
     const { skip, take, cursor, where, orderBy } = params;
-    return this.prisma.user.findMany({
+    return this.prisma.environment.findMany({
       skip,
       take,
       cursor,
@@ -31,9 +31,7 @@ export class EnvironmentService {
     });
   }
 
-  async create(
-    data: Prisma.EnvironmentCreateInput
-  ): Promise<Environment> {
+  async create(data: Prisma.EnvironmentCreateInput): Promise<Environment> {
     return this.prisma.environment.create({
       data,
     });
@@ -53,7 +51,7 @@ export class EnvironmentService {
   async softDelete(
     where: Prisma.EnvironmentWhereUniqueInput
   ): Promise<Environment> {
-    return this.prisma.user.delete({
+    return this.prisma.environment.delete({
       where,
     });
   }

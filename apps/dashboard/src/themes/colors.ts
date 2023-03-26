@@ -17,6 +17,15 @@ export const colors = {
     100: "#F7F7FA",
     50: "#FFFFFF",
   },
+  // In MUI these colors are used with transparency, and we keep them here for a better overview
+  // We can use these colors for other places if needed
+  action: {
+    0.54: "rgba(25, 24, 41, 0.54)",
+    0.32: "rgba(25, 24, 41, 0.32)",
+    0.12: "rgba(25, 24, 41, 0.12)",
+    0.08: "rgba(25, 24, 41, 0.08)",
+    0.05: "rgba(25, 24, 41, 0.05)",
+  },
   purple: {
     900: "#615BC2",
     800: "#6C65E5",

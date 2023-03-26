@@ -3,10 +3,11 @@ import { UserService } from "./user.service";
 import { User as UserModel } from "@prisma/client";
 import { CreateUserDto, UpdateUserDto, UpdateUserDtoParams } from "dto-types";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
+import { userRoutes } from "router-constants";
 
 @ApiTags("User")
 @Controller({
-  path: "user",
+  path: userRoutes.users,
 })
 export class UserController {
   constructor(private readonly userService: UserService) {}

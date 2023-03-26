@@ -6,7 +6,49 @@
             "states": "States",
             "features": "Features",
             "users": "Users",
-            "userGroups": "User Groups"
+            "userGroups": "User Groups",
+            "settings": "Settings"
         }
+    },
+    "settings": {
+        "settingsMenu": {
+            "enviroments": "Environments"
+        }
+    },
+    "projects": {
+        "header": "Projects",
+        "addProject": "Add project",
+        "projectForm": {
+            "projectIdSelect": "What is your project Id?",
+            "projectNameSelect": "What is your project name?",
+            "projectDescSelect": "What is your project description?",
+            "buttons": {
+                "cancel": "Cancel",
+                "submit": "Submit"
+            }
+        }
+    },
+    "features": {
+        "header": "Features",
+        "addFeature": "Add feature",
+        "featureForm": {
+            "featureNameSelect": "What is your feature name?",
+            "featureTypeSelect": "What kind of feature toggle do you want?",
+            "featureProjectSelect": "In which project do you want to save the toggle?",
+            "featureDescSelect": "Describe what your feature does?",
+            "placeholders": {
+                "featureName": "Feature name",
+                "featureType": "Toggle type",
+                "featureDesc": "Feature description"
+            },
+            "buttons": {
+                "cancel": "Cancel",
+                "submit": "Submit"
+            }
+        }
+    },
+    "environments": {
+        "header": "Environment",
+        "addEnv": "Add environment"
     }
 }

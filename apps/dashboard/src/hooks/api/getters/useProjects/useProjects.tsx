@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { AxiosError, AxiosResponse } from "axios";
 import { ProjectWithRelationsCount } from "prisma-client";
 import { useAxios } from "contexts/AxiosContext";
-
+import { projectRoutes } from "router-constants";
 export interface IUseProjectsOutput {
   projects?: ProjectWithRelationsCount[];
   loading: boolean;
@@ -15,7 +15,7 @@ const useProjects = (): IUseProjectsOutput => {
   const axios = useAxios();
   const getProjects = async () => {
     return axios
-      .get("http://localhost:3000/api/project")
+      .get(`http://localhost:3000/${projectRoutes.projectsBase}`)
       .then(
         (res: AxiosResponse<ProjectWithRelationsCount[], AxiosError>) =>
           res.data

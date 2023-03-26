@@ -7,10 +7,10 @@ import {
   UpdateFeatureDtoParams,
 } from "dto-types";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
-
+import { featureRoutes } from "router-constants";
 @ApiTags("Feature")
 @Controller({
-  path: "feature",
+  path: featureRoutes.feature,
 })
 export class FeatureController {
   constructor(private readonly featureService: FeatureService) {}

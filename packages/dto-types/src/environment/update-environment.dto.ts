@@ -12,11 +12,11 @@ export class UpdateEnvironmentDto implements IUpdateEnvironmentDto {
 }
 
 export interface IUpdateEnvironmentDtoParams {
-  readonly id: string;
+  readonly id: number;
 }
 
 export class UpdateEnvironmentDtoParams implements IUpdateEnvironmentDtoParams {
   @ApiProperty()
   @IsNotEmpty()
-  id: string;
+  id: number;
 }

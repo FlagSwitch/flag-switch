@@ -5,22 +5,26 @@ import AddIcon from "@mui/icons-material/Add";
 import Button from "@mui/material/Button";
 import FeatureTable from "../FeatureTable/FeatureTable";
 import { Link } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
+import { projectFeatureCreate } from "constants/routes/projectRoutes";
 export const Features: FC = () => {
+  const { t } = useTranslation(undefined, {
+    keyPrefix: "features",
+  });
   return (
     <PageContent
       isLoading={false}
       header={
         <PageHeader
-          title={`Features (1)`}
+          title={`${t("header")} (1)`}
           actions={
             <Button
               variant="contained"
               startIcon={<AddIcon />}
               component={Link}
-              to={"/projects/default/feature-create"}
+              to={projectFeatureCreate("default")}
             >
-              Add Feature
+              {t("addFeature")}
             </Button>
           }
         />
