@@ -571,9 +571,7 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^18.0.27":
-  version "18.0.28"
-  resolved "https://registry.npmjs.org/@types/react/-/react-18.0.28.tgz#accaeb8b86f4908057ad629a26635fe641480065"
-  integrity sha512-RD0ivG1kEztNBdoAK7lekI9M+azSnitIn85h4iOiaLjaTrMjzslhaqCGaI4IyCJ1RljWiLCEu4jyrLLgqxBTew==
+  version "18.0.29"
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
