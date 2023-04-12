@@ -4,7 +4,7 @@ import { ApiProperty } from "@nestjs/swagger";
 export interface ICreateEnvFeatureDto {
   readonly state: boolean;
   readonly featureName: string;
-  readonly environmentId: string;
+  readonly environmentId: number;
 }
 
 export class CreateEnvFeatureDto {
@@ -22,7 +22,7 @@ export class CreateEnvFeatureDto {
 
   @ApiProperty()
   @IsNotEmpty()
-  readonly environmentId: string;
+  readonly environmentId: number;
 
   @ApiProperty()
   @IsNotEmpty()

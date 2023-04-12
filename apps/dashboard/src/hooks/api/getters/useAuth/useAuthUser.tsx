@@ -3,7 +3,6 @@ import { useAuthEndpoint } from "./useAuthEndpoint";
 
 export interface IUseAuthUserOutput {
   user?: DashboardUser;
-  refetchUser: any;
   loading: boolean;
   error?: Error | null;
   isFetched: boolean;
@@ -16,7 +15,6 @@ export const useAuthUser = (): IUseAuthUserOutput => {
 
   return {
     user,
-    refetchUser: auth.refetch,
     loading: auth.loading,
     error: auth.error,
     isFetched: auth.isFetched,

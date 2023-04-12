@@ -7,10 +7,10 @@ import {
   UpdateStateDtoParams,
 } from "dto-types";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
-
+import { stateRoutes } from "router-constants";
 @ApiTags("State")
 @Controller({
-  path: "state",
+  path: stateRoutes.states,
 })
 export class StateController {
   constructor(private readonly stateService: StateService) {}

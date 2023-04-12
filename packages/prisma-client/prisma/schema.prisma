@@ -75,7 +75,7 @@ model User {
 }
 
 model Environment {
-  id String @id
+  id Int @id @default(autoincrement())
   name String
   updatedAt DateTime @updatedAt @default(now())
   createdAt DateTime @default(now())
@@ -107,7 +107,7 @@ model EnvFeature {
   deletedAt DateTime?
   createdAt DateTime @default(now())
   environment Environment @relation(fields: [environmentId], references: [id])
-  environmentId String
+  environmentId Int
   project Project @relation(fields: [projectId], references: [id])
   projectId String
   feature Feature @relation(fields: [featureName, projectId], references: [name, projectId])

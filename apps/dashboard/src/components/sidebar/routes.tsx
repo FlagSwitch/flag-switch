@@ -6,6 +6,7 @@ import { OverridableComponent } from "@mui/material/OverridableComponent";
 import GroupsSharpIcon from "@mui/icons-material/GroupsSharp";
 import FlagIcon from "@mui/icons-material/Flag";
 import CommitIcon from "@mui/icons-material/Commit";
+import SettingsIcon from "@mui/icons-material/Settings";
 import i18n from "i18n/client";
 
 export interface IRouteInfo {
@@ -52,6 +53,16 @@ export const userRoutes = (): Record<string, IRouteInfo> => {
       displayName: i18n.t("sidePanel.navigationHeaders.userGroups"),
       path: "/user-groups",
       icon: GroupsSharpIcon,
+    },
+  };
+};
+
+export const settingsRoutes = (): Record<string, IRouteInfo> => {
+  return {
+    settings: {
+      displayName: i18n.t("sidePanel.navigationHeaders.settings"),
+      path: "/settings",
+      icon: SettingsIcon,
     },
   };
 };

@@ -4,7 +4,7 @@ import { ApiProperty } from "@nestjs/swagger";
 export interface IUpdateEnvFeatureDto {
   readonly state: boolean;
   readonly featureName: string;
-  readonly environmentId: string;
+  readonly environmentId: number;
 }
 
 export class UpdateEnvFeatureDto implements IUpdateEnvFeatureDto {
@@ -19,5 +19,5 @@ export class UpdateEnvFeatureDto implements IUpdateEnvFeatureDto {
 
   @ApiProperty()
   @IsNotEmpty()
-  readonly environmentId: string;
+  readonly environmentId: number;
 }

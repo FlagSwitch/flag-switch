@@ -6,6 +6,7 @@ import useLoginForm from "../hooks/UseLoginForm";
 import { useAuthApi } from "hooks/api/actions/useAuthApi/useAuthApi";
 import { useAuthUser } from "hooks/api/getters/useAuth/useAuthUser";
 import { useNavigate } from "react-router";
+import { overviewRoutes } from "constants/routes";
 import { useQueryClient } from "@tanstack/react-query";
 export const LoginPage: FC = () => {
   const {
@@ -24,7 +25,7 @@ export const LoginPage: FC = () => {
 
   useEffect(() => {
     if (user?.id) {
-      navigate("/projects");
+      navigate(overviewRoutes.overviewBase);
     }
   }, [user, navigate]);
 
