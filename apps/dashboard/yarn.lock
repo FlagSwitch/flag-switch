@@ -534,7 +534,7 @@
   integrity sha512-2QywqXEAGBIUoTdgn1lAB4/C8QEqwXHj2jrCLeYTk2xVGtLiPEUD8jcMoeB2noclbiW2mMt4+Fq7fZStuz3wAQ==
 
 "@tanstack/react-query@^4.24.10":
-  version "4.29.3"
+  version "4.29.5"
   dependencies:
     "@tanstack/query-core" "4.24.10"
     use-sync-external-store "^1.2.0"
