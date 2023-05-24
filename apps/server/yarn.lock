@@ -832,7 +832,7 @@
     tslib "2.5.0"
 
 "@nestjs/schematics@^9.0.0":
-  version "9.1.0"
+  version "9.2.0"
   dependencies:
     "@angular-devkit/core" "15.0.4"
     "@angular-devkit/schematics" "15.0.4"
