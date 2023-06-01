@@ -460,7 +460,7 @@
     mime "^3.0.0"
 
 "@fastify/static@^6.9.0":
-  version "6.10.1"
+  version "6.10.2"
   dependencies:
     "@fastify/accept-negotiator" "^1.0.0"
     "@fastify/send" "^2.0.0"
