@@ -1078,7 +1078,7 @@
   integrity sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==
 
 "@types/lodash@^4.14.191":
-  version "4.14.194"
+  version "4.14.195"
   dependencies:
     "@types/mime" "*"
     "@types/node" "*"
