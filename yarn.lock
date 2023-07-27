@@ -3043,9 +3043,9 @@
     pluralize "8.0.0"
 
 "@nestjs/swagger@^7.0.0":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-7.1.1.tgz#67285035a58a32059f219532b449addf81f8e513"
-  integrity sha512-gIG1aVCegZlIppXZizKHqWkqZvQkvptTBR1C5CzZoDwGoVVKJBmJ2i9FAcsnzzb0j7hncFKhcBuWYOBJOsCvug==
+  version "7.1.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-7.1.3.tgz#0f07846c58ddd4f66a3af79be3aad841ee2182ef"
+  integrity sha512-FoJE+lLsm9LbJM5cGjt/moNyQliVf32tGnbDWvPuwuhF2nJGt61+N2mQ6SZ3f3WNGXfKRoZRSqwsN6ggSi9sAA==
   dependencies:
     "@nestjs/mapped-types" "2.0.2"
     js-yaml "4.1.0"
