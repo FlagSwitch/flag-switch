@@ -15,7 +15,7 @@
     "@mui/icons-material": "^5.11.9",
     "@mui/lab": "^5.0.0-alpha.122",
     "@mui/material": "^5.11.12",
-    "@tanstack/react-query": "^4.24.10",
+    "@tanstack/react-query": "^5.0.0",
     "apexcharts": "^3.37.1",
     "axios": "^1.3.4",
     "classnames": "^2.3.2",
@@ -33,7 +33,7 @@
     "router-constants": "*"
   },
   "devDependencies": {
-    "@tanstack/react-query-devtools": "^4.27.0",
+    "@tanstack/react-query-devtools": "^5.0.0",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react-swc": "^3.0.0",
