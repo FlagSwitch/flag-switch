@@ -6028,7 +6028,7 @@ react-dev-utils@^12.0.1:
     text-table "^0.2.0"
 
 react-dom@^18.0.0:
-  version "18.3.0"
+  version "18.3.1"
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
@@ -6126,7 +6126,7 @@ react-textarea-autosize@^8.3.2:
     use-latest "^1.2.1"
 
 react@^18.0.0:
-  version "18.3.0"
+  version "18.3.1"
   dependencies:
     loose-envify "^1.1.0"
 
