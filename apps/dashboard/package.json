@@ -23,7 +23,7 @@
     "i18next": "^23.0.0",
     "i18next-browser-languagedetector": "^8.0.0",
     "i18next-http-backend": "^2.2.0",
-    "material-react-table": "^2.0.0",
+    "material-react-table": "^3.0.0",
     "prisma-client": "*",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",
