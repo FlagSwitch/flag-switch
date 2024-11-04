@@ -19,7 +19,7 @@
   "dependencies": {
     "prisma-client": "*",
     "class-validator": "^0.14.0",
-    "@nestjs/swagger": "^7.0.0"
+    "@nestjs/swagger": "^8.0.0"
   },
   "devDependencies": {
     "eslint": "^9.0.0",
