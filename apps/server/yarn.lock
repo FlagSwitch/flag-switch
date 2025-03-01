@@ -4345,7 +4345,7 @@ rxjs@6.6.7, rxjs@^6.6.0:
     tslib "^1.9.0"
 
 rxjs@^7.2.0, rxjs@^7.5.5:
-  version "7.8.1"
+  version "7.8.2"
   dependencies:
     tslib "^2.1.0"
 
