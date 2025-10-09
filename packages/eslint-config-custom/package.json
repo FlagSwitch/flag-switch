@@ -13,8 +13,8 @@
     "eslint": "9.36.0",
     "eslint-plugin-prettier": "^5.0.0",
     "next": "latest",
-    "react": "19.1",
-    "react-dom": "19.1",
+    "react": "19.2",
+    "react-dom": "19.2",
     "typescript": "^5.0.0"
   },
   "publishConfig": {
