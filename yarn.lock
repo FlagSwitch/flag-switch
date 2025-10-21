@@ -4799,9 +4799,9 @@
     levn "^0.4.1"
 
 "@faker-js/faker@^10.0.0":
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-10.0.0.tgz#df11f0ba2b2d7243574e34364948d6a25163c6f4"
-  integrity sha512-UollFEUkVXutsaP+Vndjxar40Gs5JL2HeLcl8xO1QAjJgOdhc3OmBFWyEylS+RddWaaBiAzH+5/17PLQJwDiLw==
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-10.1.0.tgz#eb72869d01ccbff41a77aa7ac851ce1ac9371129"
+  integrity sha512-C3mrr3b5dRVlKPJdfrAXS8+dq+rq8Qm5SNRazca0JKgw1HQERFmrVb0towvMmw5uu8hHKNiQasMaR/tydf3Zsg==
 
 "@fastify/accept-negotiator@^2.0.0":
   version "2.0.1"
@@ -4809,9 +4809,9 @@
   integrity sha512-/c/TW2bO/v9JeEgoD/g1G5GxGeCF1Hafdf79WPmUlgYiBXummY0oX3VVq4yFkKKVBKDNlaDUYoab7g38RpPqCQ==
 
 "@fastify/ajv-compiler@^4.0.0":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@fastify/ajv-compiler/-/ajv-compiler-4.0.2.tgz#da05938cf852901bfb953738764f553b5449b80b"
-  integrity sha512-Rkiu/8wIjpsf46Rr+Fitd3HRP+VsxUFDDeag0hs9L0ksfnwx2g7SPQQTFL0E8Qv+rfXzQOxBJnjUB9ITUDjfWQ==
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/@fastify/ajv-compiler/-/ajv-compiler-4.0.5.tgz#fdb0887a7af51abaae8c1829e8099d34f8ddd302"
+  integrity sha512-KoWKW+MhvfTRWL4qrhUwAAZoaChluo0m0vbiJlGMt2GXvL4LVPQEjt8kSpHI3IBq5Rez8fg+XeH3cneztq+C7A==
   dependencies:
     ajv "^8.12.0"
     ajv-formats "^3.0.1"
@@ -7108,10 +7108,10 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-18.14.4.tgz#0e64ec0b35a772e1e3d849f9a0ff61782d0cb647"
   integrity sha512-VhCw7I7qO2X49+jaKcAUwi3rR+hbxT5VcYF493+Z5kMLI0DL568b7JI4IDJaxWFH0D/xwmGJNoXisyX+w7GH/g==
 
-"@types/node@22.18.9":
-  version "22.18.9"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.18.9.tgz#5c55a22de88d7bbbb8e1e5f041fa0293b5beae82"
-  integrity sha512-5yBtK0k/q8PjkMXbTfeIEP/XVYnz1R9qZJ3yUicdEW7ppdDJfe+MqXEhpqDL3mtn4Wvs1u0KLEG0RXzCgNpsSg==
+"@types/node@22.18.10":
+  version "22.18.10"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.18.10.tgz#37f0ac8d2ec41af7bba06f162c85ff409e4e3420"
+  integrity sha512-anNG/V/Efn/YZY4pRzbACnKxNKoBng2VTFydVu8RRs5hQjikP8CQfaeAV59VFSCzKNp90mXiVXW2QzV56rwMrg==
   dependencies:
     undici-types "~6.21.0"
 
