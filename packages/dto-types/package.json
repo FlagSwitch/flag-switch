@@ -22,7 +22,7 @@
     "@nestjs/swagger": "^11.0.0"
   },
   "devDependencies": {
-    "eslint": "^9.0.0",
+    "eslint": "^10.0.0",
     "eslint-config-custom": "*",
     "rimraf": "^6.0.0",
     "tsconfig": "*",
