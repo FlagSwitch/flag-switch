@@ -4795,23 +4795,23 @@
     levn "^0.4.1"
 
 "@faker-js/faker@^10.0.0":
-  version "10.5.0"
-  resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-10.5.0.tgz#d2f6a8c7f08d087ac5f077d6babd0821edf24c03"
-  integrity sha512-bsxD8WLS5lIj7aaoCx1YJkktqYj5vlBUE6HWzu2Q51ksrGJ0H737ECCKlFU7Yf8Br45z9t99frBp/J7kzbMPAg==
+  version "10.6.0"
+  resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-10.6.0.tgz#b6b0248f0f59e0ac69ad6803167d58bb824f929d"
+  integrity sha512-3RQHgEtvL1Frl/d1cSreo7qhJ3Gk1OdNUai/CtZ8G+wYeRQnJih3s9xJ9/kgYekPQRdwgh0HXRPqMlzWGwivIQ==
 
 "@fastify/accept-negotiator@^2.0.0":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@fastify/accept-negotiator/-/accept-negotiator-2.0.1.tgz#77afd6254ba77f6c22c6f35c4fb0c1b6d005199b"
-  integrity sha512-/c/TW2bO/v9JeEgoD/g1G5GxGeCF1Hafdf79WPmUlgYiBXummY0oX3VVq4yFkKKVBKDNlaDUYoab7g38RpPqCQ==
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@fastify/accept-negotiator/-/accept-negotiator-2.1.0.tgz#43a0fbd4deb30f65967d5823a1dd09495ddc40e5"
+  integrity sha512-F3EVbzWt+xcnVaOHmWyIlpuFtbxOln7HDZQsh09MtMmMm/CipMayNt8hnIL8VQi54u2ZociDbf+iluGYkf7B1A==
 
 "@fastify/ajv-compiler@^4.0.0":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@fastify/ajv-compiler/-/ajv-compiler-4.0.5.tgz#fdb0887a7af51abaae8c1829e8099d34f8ddd302"
-  integrity sha512-KoWKW+MhvfTRWL4qrhUwAAZoaChluo0m0vbiJlGMt2GXvL4LVPQEjt8kSpHI3IBq5Rez8fg+XeH3cneztq+C7A==
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/@fastify/ajv-compiler/-/ajv-compiler-4.0.6.tgz#f4f1ea994d7fb3e05906f7cba000200327d0c4a9"
+  integrity sha512-NtuzM0SfaMJbGlnjr9LWQUN5LzgSrbB8tf/wRZNas+4E1O/Nmzl53e7ruT61HDZyRCJGC6FxIogmNZO1c5ETBA==
   dependencies:
     ajv "^8.12.0"
     ajv-formats "^3.0.1"
-    fast-uri "^3.0.0"
+    fast-uri "^4.0.0"
 
 "@fastify/cors@10.0.2":
   version "10.0.2"
@@ -12328,6 +12328,11 @@ fast-uri@^3.0.0, fast-uri@^3.0.1:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/fast-uri/-/fast-uri-3.0.6.tgz#88f130b77cfaea2378d56bf970dea21257a68748"
   integrity sha512-Atfo14OibSv5wAp4VWNsFYE1AchQRTv9cBGWET4pZWHzYshFSS9NQI6I57rdKn9croWVMbYFbLhJ+yJvmZIIHw==
+
+fast-uri@^4.0.0:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/fast-uri/-/fast-uri-4.1.2.tgz#1e225af32fb0a178db8f14d7d9ba93ff24485694"
+  integrity sha512-TyGmBcbDTZXcb2cj5MV89DrF42DKvb3y5DDUNh95iO+IMeAzMkVSxK1PZRrRIpc9yg8U2GhGdbofNa0LS/a4Bw==
 
 fastify-plugin@^5.0.0:
   version "5.0.0"
